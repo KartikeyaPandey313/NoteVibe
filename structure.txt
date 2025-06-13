@@ -1,0 +1,30 @@
+NoteVibe - Flask Static Site
+==========================
+
+Project Structure
+----------------
+.
+├── app.py                  # Main Flask application file
+├── requirements.txt         # Python dependencies
+├── structure.txt            # This file (project structure)
+├── templates/               # HTML templates
+│   ├── 404.html            # Error page
+│   ├── about.html          # About page
+│   ├── cheatsheets.html    # Cheatsheets page
+│   ├── comming-soon.html   # Coming soon page
+│   ├── contact.html        # Contact page
+│   ├── files/              # Nested templates
+│   ├── home.html           # Home page
+│   ├── interview-prep.html # Interview preparation page
+│   ├── my-gear.html        # My gear page
+│   ├── notes.html          # Notes page
+│   ├── services.html       # Services page
+│   └── updates.html        # Updates page
+└── static/                  # Static files directory
+    └── images/             # Image files
+
+Application Description
+----------------------
+NoteVibe is a modern web application providing programming resources, notes, and community support.
+The application serves a static site with multiple pages for different types of content.
+Flask is used as the web framework to handle routing and template rendering. 

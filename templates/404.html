@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | NoteVibe</title>
+    <meta name="author" content="NoteVibe Team">
+    <meta name="owner" content="Kartikeya Pandey">
+    <meta name="description" content="Page not found. Return to the NoteVibe homepage.">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #10131a;
+            --secondary-color: #232d3f;
+            --accent-color: #08f7fe;
+            --accent-gradient: linear-gradient(90deg, #08f7fe 0%, #09fbd3 100%);
+            --nav-link-color: #fff;
+            --card-bg: rgba(20, 22, 23, 0.94);
+            --glass-bg: rgba(30, 39, 60, 0.92);
+            --btn-glow: 0 0 18px #08f7fe99, 0 0 4px #09fbd366;
+            --text-glow: 0 0 6px #08f7fe99;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #10131a;
+            color: #e3e3e3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #10131a 0%, #232d3f 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-size: 10rem;
+            font-weight: bold;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: var(--text-glow);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(8, 247, 254, 0.7));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 20px rgba(8, 247, 254, 0.9));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 5px rgba(8, 247, 254, 0.7));
+            }
+        }
+
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #e3e3e3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-gradient);
+            color: #10131a;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: var(--btn-glow);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px #08f7feaa, 0 0 8px #09fbd388;
+        }
+
+        .logo {
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            color: transparent;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            filter: drop-shadow(0 2px 8px #08f7fe44);
+            text-shadow: var(--text-glow);
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+
+            50% {
+                transform: translateY(0) translateX(20px);
+            }
+
+            75% {
+                transform: translateY(20px) translateX(10px);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-message {
+                font-size: 1.5rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="error-container">
+        <a href="home.html" class="logo">NoteVibe&trade;</a>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Page Not Found</h2>
+        <p class="error-description">Oops! The page you're looking for doesn't exist or has been moved. Let's get you
+            back on track.</p>
+        <a href="home.html" class="btn">Return to Homepage</a>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const size = Math.random() * 5 + 2;
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random position
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+
+            // Random animation delay
+            const delay = Math.random() * 10;
+
+            // Random opacity
+            const opacity = Math.random() * 0.5 + 0.1;
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.opacity = opacity;
+
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+
+</html>
