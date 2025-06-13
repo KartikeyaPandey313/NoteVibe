@@ -42,6 +42,6 @@ The project logo is shown above. To use it in your site:
 
 ---
 
-**Author:** NoteVibe Tea,
+**Author:** NoteVibe Team
 
 For more details, see the source code and comments in `app.py`. 
