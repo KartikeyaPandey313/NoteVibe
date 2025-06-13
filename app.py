@@ -85,6 +85,6 @@ if __name__ == '__main__':
     app.run(debug=True)
     
     # To access from other devices on the network:
-    # app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
     # Run python -m http.server in terminal
     # Visit http://192.168.10.75:5000
