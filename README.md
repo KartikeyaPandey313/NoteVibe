@@ -23,7 +23,7 @@ See `structure.txt` for a detailed overview.
    ```
 3. **Run the application**
    ```bash
-   python main.py
+   python app.py
    ```
 4. **Open your browser** and visit [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
@@ -33,7 +33,7 @@ See `structure.txt` for a detailed overview.
 
 ## Logo
 The project logo is shown above. To use it in your site:
-1. Save the provided logo image as `logo.png`
+1. Save the provided logo image as `logo.ico`
 2. Place it in the `static/images/` directory
 3. Reference it in your HTML templates as:
    ```html
