@@ -1,16 +1,40 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: Updates page presents the latest announcements, release notes, and community news for NoteVibe users.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updates - NoteVibe</title>
+    <meta name="robots" content="index, follow">
+    <title>Latest Updates - NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
-        content="Stay updated with the latest news, new notes, cheat sheets, and feature announcements from NoteVibe. Check back regularly for fresh resources and improvements.">
+        content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
+    <link rel="canonical" href="https://notevibe.com/updates.html">
+    <meta name="theme-color" content="#08f7fe">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/updates.html">
+    <meta property="og:title" content="Latest Updates - NoteVibe">
+    <meta property="og:description"
+        content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/updates.html">
+    <meta property="twitter:title" content="Latest Updates - NoteVibe">
+    <meta property="twitter:description"
+        content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -257,7 +281,7 @@
             text-align: center;
             padding: 2rem 0;
             width: 100%;
-            border-radius: 8px;
+            border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 0;
         }
@@ -293,17 +317,38 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+        <a href="{{ url_for('home') }}" class="logo">NoteVibe™</a>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('services') }}">Services</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
     <section class="updates-section">
@@ -328,28 +373,28 @@
         <div class="footer-content">
             <div>
                 <h3>Main</h3>
-                <a href="home.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="my-gear.html">My Gear</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('my_gear') }}">My Gear</a>
             </div>
             <div>
                 <h3>Learn</h3>
-                <a href="notes.html">Notes</a>
-                <a href="cheatsheets.html">Cheatsheets</a>
-                <a href="interview-prep.html">Interview Prep.</a>
+                <a href="{{ url_for('notes') }}">Notes</a>
+                <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="comming-soon.html">Terms</a>
-                <a href="comming-soon.html">Privacy</a>
+                <a href="{{ url_for('coming_soon') }}">Terms</a>
+                <a href="{{ url_for('coming_soon') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
             </div>
         </div>
-        <p>Made with ❤️ by NoteVibe Team</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
 </body>
 

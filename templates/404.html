@@ -1,15 +1,40 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: Custom 404 error page that informs users when a requested resource cannot be found, offering navigation back to the site.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found | NoteVibe</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Page Not Found - NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
-    <meta name="description" content="Page not found. Return to the NoteVibe homepage.">
+    <meta name="description"
+        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
+    <link rel="canonical" href="https://notevibe.com/404.html">
+    <meta name="theme-color" content="#08f7fe">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/404.html">
+    <meta property="og:title" content="Page Not Found - NoteVibe">
+    <meta property="og:description"
+        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/404.html">
+    <meta property="twitter:title" content="Page Not Found - NoteVibe">
+    <meta property="twitter:description"
+        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -192,12 +217,12 @@
     <div class="particles" id="particles"></div>
 
     <div class="error-container">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+        <a href="{{ url_for('home') }}" class="logo">NoteVibe™</a>
         <h1 class="error-code">404</h1>
         <h2 class="error-message">Page Not Found</h2>
         <p class="error-description">Oops! The page you're looking for doesn't exist or has been moved. Let's get you
             back on track.</p>
-        <a href="home.html" class="btn">Return to Homepage</a>
+        <a href="{{ url_for('home') }}" class="btn">Return to Homepage</a>
     </div>
 
     <script>

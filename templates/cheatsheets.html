@@ -1,16 +1,43 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: Cheatsheets page providing quick-reference coding cheat sheets and handy programming tips for multiple languages.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheat Sheets - NoteVibe</title>
+    <meta name="robots" content="index, follow">
+    <title>Programming Cheatsheets - NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
-        content="Access comprehensive cheat sheets for popular programming languages and technologies. Get quick coding references and essential tips with NoteVibe's curated cheat sheets.">
+        content="Quick reference programming cheatsheets for Python, Flask, web development, and more. Perfect for quick lookups and efficient coding.">
+    <link rel="canonical" href="https://notevibe.com/cheatsheets.html">
+    <meta name="theme-color" content="#08f7fe">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/cheatsheets.html">
+    <meta property="og:title" content="Programming Cheatsheets - NoteVibe">
+    <meta property="og:description"
+        content="Quick reference programming cheatsheets for Python, Flask, web development, and more. Perfect for quick lookups and efficient coding.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/cheatsheets.html">
+    <meta property="twitter:title" content="Programming Cheatsheets - NoteVibe">
+    <meta property="twitter:description"
+        content="Quick reference programming cheatsheets for Python, Flask, web development, and more. Perfect for quick lookups and efficient coding.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -68,16 +95,17 @@
         }
 
         .navbar .logo {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
             background: var(--accent-gradient);
             background-clip: text;
             -webkit-background-clip: text;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
             filter: drop-shadow(0 2px 8px #08f7fe44);
+            text-shadow: var(--text-glow);
             user-select: none;
         }
 
@@ -267,7 +295,7 @@
             text-align: center;
             padding: 2rem 0;
             width: 100%;
-            border-radius: 18px;
+            border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 0;
         }
@@ -303,17 +331,65 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        /* Dropdown styles */
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+    <nav class="navbar" aria-label="Main Navigation">
+        <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+
+            <!-- Dropdown for Services -->
+            <li class="dropdown">
+                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('notes') }}">Notes</a>
+                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
+                </div>
+            </li>
+
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
     <section class="cheatsheets-section">
@@ -322,8 +398,8 @@
             <div class="cheatsheets-list">
                 <!-- Example file links, replace/hook with your uploaded files -->
                 <!-- <a href="files/cheatsheets.pdf" target="_blank">Cheat Sheets</a> -->
-                <!-- Add more notes here as needed -->
-                <h1><br><br>Comming soon...</h1>
+                <!-- Add more cheat sheets here as needed -->
+                <h1><br><br>Coming soon...</h1>
                 <!-- Add more cheat sheets here as needed -->
             </div>
         </div>
@@ -332,28 +408,28 @@
         <div class="footer-content">
             <div>
                 <h3>Main</h3>
-                <a href="home.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="my-gear.html">My Gear</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('my_gear') }}">My Gear</a>
             </div>
             <div>
                 <h3>Learn</h3>
-                <a href="notes.html">Notes</a>
-                <a href="cheatsheets.html">Cheatsheets</a>
-                <a href="interview-prep.html">Interview Prep.</a>
+                <a href="{{ url_for('notes') }}">Notes</a>
+                <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="comming-soon.html">Terms</a>
-                <a href="comming-soon.html">Privacy</a>
+                <a href="{{ url_for('coming_soon') }}">Terms</a>
+                <a href="{{ url_for('coming_soon') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
             </div>
         </div>
-        <p>Made with ❤️ by NoteVibe Team</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
 </body>
 

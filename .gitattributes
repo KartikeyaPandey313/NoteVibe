@@ -1,2 +1,8 @@
+# ──────────────────────────────────────────────
+#  Author: NoteVibe Team
+#  Owner: Kartikeya Pandey
+#  Description: Git attributes configuration controlling line endings and text normalization.
+# ──────────────────────────────────────────────
+
 # Auto detect text files and perform LF normalization
 * text=auto

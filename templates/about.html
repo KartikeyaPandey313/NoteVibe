@@ -1,16 +1,55 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: This about page shares the mission, vision, and background story of NoteVibe, highlighting the team and platform objectives.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>About - NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
         content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
+
+    <!-- SEO Meta Tags -->
+    <link rel="canonical" href="https://notevibe.com/about.html">
+    <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/about.html">
+    <meta property="og:title" content="About - NoteVibe">
+    <meta property="og:description"
+        content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/about.html">
+    <meta property="twitter:title" content="About - NoteVibe">
+    <meta property="twitter:description"
+        content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -69,13 +108,65 @@
             }
         }
 
+        /* Dropdown styles */
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
         .navbar .logo {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
             background: var(--accent-gradient);
             background-clip: text;
             -webkit-background-clip: text;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
@@ -242,6 +333,28 @@
             }
         }
 
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-item {
+                padding: 1rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+        }
+
         /* Footer styles */
         .footer-card {
             background-color: var(--secondary-color);
@@ -249,7 +362,7 @@
             text-align: center;
             padding: 2rem 0;
             width: 100%;
-            border-radius: 15px;
+            border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 0;
         }
@@ -289,54 +402,74 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+    <nav class="navbar" aria-label="Main Navigation">
+        <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+
+            <!-- Dropdown for Services -->
+            <li class="dropdown">
+                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('notes') }}">Notes</a>
+                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
+                </div>
+            </li>
+
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}" class="active" aria-current="page">About</a></li>
         </ul>
     </nav>
-    <section class="about-section">
-        <div class="about-card">
-            <h1>About</h1>
-            <p>At <strong>NoteVibe</strong>, we transform knowledge into your competitive edge. Unlock your potential
-                with expertly curated content and practical tools designed to empower learners and professionals alike.
-                Whether you're mastering new skills or advancing your career, NoteVibe provides clear, actionable
-                resources to help you succeed.</p>
-            <p>Join a global community committed to excellence and lifelong learning. With NoteVibe, knowledge isn't
-                just accessible—it's elevated. Experience the advantage of learning with us.</p>
-            <p class="highlight">NoteVibe - <strong>Where Coders Catch The Vibe</strong></p>
-        </div>
-    </section>
+
+    <main>
+        <!-- Your about page content here -->
+        <section class="about-section">
+            <div class="about-card">
+                <h1>About Us</h1>
+                <p>Welcome to NoteVibe — your go-to hub for simplified programming education. We offer concise,
+                    high-quality notes, cheatsheets, and resources to help learners at all levels build a solid coding
+                    foundation.</p>
+
+                <p>NoteVibe is currently under development. You may encounter minor issues or unfinished features. If
+                    so, feel free to <a href="{{ url_for('contact') }}"
+                        style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 1rem; text-decoration: none;">contact
+                        us</a> — your feedback is invaluable
+                    as we continue to grow and refine the platform.</p>
+
+        </section>
+    </main>
+
     <footer class="footer-card">
         <div class="footer-content">
             <div>
                 <h3>Main</h3>
-                <a href="home.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="my-gear.html">My Gear</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('my_gear') }}">My Gear</a>
             </div>
             <div>
                 <h3>Learn</h3>
-                <a href="notes.html">Notes</a>
-                <a href="cheatsheets.html">Cheatsheets</a>
-                <a href="interview-prep.html">Interview Prep.</a>
+                <a href="{{ url_for('notes') }}">Notes</a>
+                <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="comming-soon.html">Terms</a>
-                <a href="comming-soon.html">Privacy</a>
+                <a href="{{ url_for('coming_soon') }}">Terms</a>
+                <a href="{{ url_for('coming_soon') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
             </div>
         </div>
-        <p>Made with ❤️ by NoteVibe Team</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
+
+    <!-- Deferred JavaScript -->
+    <script src="/static/js/main.js" defer></script>
 </body>
 
 </html>

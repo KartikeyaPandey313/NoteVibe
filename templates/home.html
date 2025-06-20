@@ -1,16 +1,55 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: This home page serves as the landing page for NoteVibe, welcoming users and showcasing key sections, navigation, and a modern interface to explore coding resources.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>NoteVibe - Home</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
         content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning. Upgrade your coding game with concise, updated notes and a passionate community.">
+
+    <!-- SEO Meta Tags -->
+    <link rel="canonical" href="https://notevibe.com/home.html">
+    <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/home.html">
+    <meta property="og:title" content="NoteVibe - Home">
+    <meta property="og:description"
+        content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/home.html">
+    <meta property="twitter:title" content="NoteVibe - Home">
+    <meta property="twitter:description"
+        content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -69,13 +108,64 @@
             }
         }
 
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
         .navbar .logo {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
             background: var(--accent-gradient);
             background-clip: text;
             -webkit-background-clip: text;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
@@ -462,197 +552,216 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+    <nav class="navbar" aria-label="Main Navigation">
+        <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
-            <li><a href="home.html" class="active">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url_for('home') }}" class="active" aria-current="page">Home</a></li>
+
+            <!-- Dropdown for Services -->
+            <li class="dropdown">
+                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('notes') }}">Notes</a>
+                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
+                </div>
+            </li>
+
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Upgrade Your Coding Game.<br>Master Programming Notes, <span
-                    style="background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;">With
-                    Hand and Book.</span></h1>
-            <p>
-                Welcome to <strong>NoteVibe</strong>- your ultimate destination for curated programming notes. We
-                deliver the sharpest handbooks and cheat-sheets to supercharge your learning and efficiency. Take your
-                coding skills to the next level with a community that's as passionate as you are.</p>
-            <a href="services.html" class="cta-btn">
-                Explore Our Services</a>
-        </div>
-    </section>
-
-    <section class="statement-section">
-        <div class="statement-card">
-            <p>
-                At <span class="highlight-text">NoteVibe</span>, we're building a modern learning platform focused on
-                practical programming education. Our platform is designed for developers who want to learn efficiently
-                and effectively, with a focus on real-world applications and industry-relevant skills.
-            </p>
-            <br>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h3>📚 Programming Notes</h3>
-                    <p>Our current collection includes detailed notes on:</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Python Basics</span>
-                        <span class="tech-badge">Python OOP</span>
-                        <span class="tech-badge">Flask Framework</span>
-                        <span class="tech-badge">Web Development</span>
-                    </div>
-                    <p>Each topic features:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Step-by-step explanations</li>
-                        <li>Practical code examples</li>
-                        <li>Common pitfalls and solutions</li>
-                        <li>Best practices and conventions</li>
-                        <li>Practice sheets, and questions</li>
-                    </ul>
-                </div>
-                <div class="feature-item">
-                    <h3>📋 Smart Cheatsheets</h3>
-                    <p>Quick reference guides for:</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Python Syntax</span>
-                        <span class="tech-badge">Flask Routes</span>
-                        <span class="tech-badge">HTML/CSS</span>
-                        <span class="tech-badge">Java Syntax</span>
-                    </div>
-                    <p>Our cheatsheets include:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Command references</li>
-                        <li>Syntax examples</li>
-                        <li>Common use cases</li>
-                        <li>Practice sheets, and questions</li>
-                        <li>Time-saving shortcuts</li>
-                    </ul>
-                </div>
-                <div class="feature-item">
-                    <h3>🎯 Interview Preparation</h3>
-                    <p>Currently covering:</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Python DSA</span>
-                        <span class="tech-badge">Basic Algorithms</span>
-                        <span class="tech-badge">Problem Solving</span>
-                        <span class="tech-badge">Coding Patterns</span>
-                    </div>
-                    <p>Our interview resources include:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Fundamental DSA concepts</li>
-                        <li>Pattern-based problem solving</li>
-                        <li>Time complexity analysis</li>
-                        <li>Practice problems with solutions</li>
-                        <li>Important quesions for Interview</li>
-                    </ul>
-                </div>
-                <div class="feature-item">
-                    <h3>🚀 Project Resources</h3>
-                    <p>Featured projects and tutorials:</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Flask Apps</span>
-                        <span class="tech-badge">Static Sites</span>
-                        <span class="tech-badge">Python Scripts</span>
-                        <span class="tech-badge">Web Projects</span>
-                    </div>
-                    <p>Each project includes:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                        <li>Complete source code</li>
-                        <li>Setup instructions</li>
-                        <li>Documentation</li>
-                        <li>Best practices implementation</li>
-                    </ul>
-                </div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Upgrade Your Coding Game.<br>Master Programming Notes, <span
+                        style="background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;">With
+                        Hand and Book.</span></h1>
+                <p>
+                    Welcome to <strong>NoteVibe</strong>- your ultimate destination for curated programming notes. We
+                    deliver the sharpest handbooks and cheat-sheets to supercharge your learning and efficiency. Take
+                    your
+                    coding skills to the next level with a community that's as passionate as you are.</p>
+                <a href="{{ url_for('services') }}" class="cta-btn">
+                    Explore Our Services</a>
             </div>
+        </section>
 
-            <div class="section-divider"></div>
+        <section class="statement-section">
+            <div class="statement-card">
+                <p>
+                    At <span class="highlight-text">NoteVibe</span>, we're building a modern learning platform focused
+                    on
+                    practical programming education. Our platform is designed for developers who want to learn
+                    efficiently
+                    and effectively, with a focus on real-world applications and industry-relevant skills.
+                </p>
+                <br>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>📚 Programming Notes</h3>
+                        <p>Our current collection includes detailed notes on:</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python Basics</span>
+                            <span class="tech-badge">Python OOP</span>
+                            <span class="tech-badge">Flask Framework</span>
+                            <span class="tech-badge">Web Development</span>
+                        </div>
+                        <p>Each topic features:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Step-by-step explanations</li>
+                            <li>Practical code examples</li>
+                            <li>Common pitfalls and solutions</li>
+                            <li>Best practices and conventions</li>
+                            <li>Practice sheets, and questions</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📋 Smart Cheatsheets</h3>
+                        <p>Quick reference guides for:</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python Syntax</span>
+                            <span class="tech-badge">Flask Routes</span>
+                            <span class="tech-badge">HTML/CSS</span>
+                            <span class="tech-badge">Java Syntax</span>
+                        </div>
+                        <p>Our cheatsheets include:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Command references</li>
+                            <li>Syntax examples</li>
+                            <li>Common use cases</li>
+                            <li>Practice sheets, and questions</li>
+                            <li>Time-saving shortcuts</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🎯 Interview Preparation</h3>
+                        <p>Currently covering:</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python DSA</span>
+                            <span class="tech-badge">Basic Algorithms</span>
+                            <span class="tech-badge">Problem Solving</span>
+                            <span class="tech-badge">Coding Patterns</span>
+                        </div>
+                        <p>Our interview resources include:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Fundamental DSA concepts</li>
+                            <li>Pattern-based problem solving</li>
+                            <li>Time complexity analysis</li>
+                            <li>Practice problems with solutions</li>
+                            <li>Important quesions for Interview</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🚀 Project Resources</h3>
+                        <p>Featured projects and tutorials:</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Flask Apps</span>
+                            <span class="tech-badge">Static Sites</span>
+                            <span class="tech-badge">Python Scripts</span>
+                            <span class="tech-badge">Web Projects</span>
+                        </div>
+                        <p>Each project includes:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Complete source code</li>
+                            <li>Setup instructions</li>
+                            <li>Documentation</li>
+                            <li>Best practices implementation</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🌟 Current Focus Areas</h3>
-            <p>
-                We're actively developing content in these areas:
-            </p>
-            <div class="tech-stack" style="margin: 1.5rem 0;">
-                <span class="tech-badge">Python Programming</span>
-                <span class="tech-badge">Flask Development</span>
-                <span class="tech-badge">Web Technologies</span>
-                <span class="tech-badge">Project Building</span>
-                <span class="tech-badge">DSA Fundamentals</span>
+                <div class="section-divider"></div>
+
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🌟 Current Focus Areas</h3>
+                <p>
+                    We're actively developing content in these areas:
+                </p>
+                <div class="tech-stack" style="margin: 1.5rem 0;">
+                    <span class="tech-badge">Python Programming</span>
+                    <span class="tech-badge">Flask Development</span>
+                    <span class="tech-badge">Web Technologies</span>
+                    <span class="tech-badge">Project Building</span>
+                    <span class="tech-badge">DSA Fundamentals</span>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">💡 Learning Approach</h3>
+                <p>
+                    Our content follows a practical, hands-on approach. We focus on building real projects and solving
+                    actual coding problems. Every concept is explained with practical examples and use cases, making it
+                    easier to understand and apply in real-world scenarios.
+                </p>
+                <br>
+                <p>
+                    What makes our content unique:
+                </p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Clear, concise explanations with practical examples</li>
+                    <li>Focus on Python and Flask framework</li>
+                    <li>Project-based learning approach</li>
+                    <li>Regular updates based on latest practices</li>
+                    <li>Emphasis on clean code and best practices</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🎯 Future Roadmap</h3>
+                <p>
+                    We're continuously expanding our content library. Upcoming additions include:
+                </p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Advanced Python concepts and applications</li>
+                    <li>Web development best practices and guides</li>
+                    <li>More Flask project tutorials and templates</li>
+                    <li>Extended DSA coverage with Python implementations</li>
+                    <li>More languages tutorials and guides</li>
+                </ul>
+                <br>
+                <p>
+                    Join us on this learning journey as we continue to build and expand our programming resources.
+                    Whether
+                    you're starting with Python basics or building complex Flask applications, NoteVibe is here to
+                    support
+                    your growth as a developer.
+                </p>
+                <br>
+                <a href="{{ url_for('about') }}" class="abt-btn">Know more</a>
             </div>
-
-            <div class="section-divider"></div>
-
-            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">💡 Learning Approach</h3>
-            <p>
-                Our content follows a practical, hands-on approach. We focus on building real projects and solving
-                actual coding problems. Every concept is explained with practical examples and use cases, making it
-                easier to understand and apply in real-world scenarios.
-            </p>
-            <br>
-            <p>
-                What makes our content unique:
-            </p>
-            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                <li>Clear, concise explanations with practical examples</li>
-                <li>Focus on Python and Flask framework</li>
-                <li>Project-based learning approach</li>
-                <li>Regular updates based on latest practices</li>
-                <li>Emphasis on clean code and best practices</li>
-            </ul>
-
-            <div class="section-divider"></div>
-
-            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🎯 Future Roadmap</h3>
-            <p>
-                We're continuously expanding our content library. Upcoming additions include:
-            </p>
-            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                <li>Advanced Python concepts and applications</li>
-                <li>Web development best practices and guides</li>
-                <li>More Flask project tutorials and templates</li>
-                <li>Extended DSA coverage with Python implementations</li>
-                <li>More languages tutorials and guides</li>
-            </ul>
-            <br>
-            <p>
-                Join us on this learning journey as we continue to build and expand our programming resources.
-                Whether
-                you're starting with Python basics or building complex Flask applications, NoteVibe is here to
-                support
-                your growth as a developer.
-            </p>
-            <br>
-            <a href="about.html" class="abt-btn">Know more</a>
-        </div>
-    </section>
+        </section>
+    </main>
     <footer class="footer-card">
         <div class="footer-content">
             <div>
                 <h3>Main</h3>
-                <a href="home.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="my-gear.html">My Gear</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('my_gear') }}">My Gear</a>
             </div>
             <div>
                 <h3>Learn</h3>
-                <a href="notes.html">Notes</a>
-                <a href="cheatsheets.html">Cheatsheets</a>
-                <a href="interview-prep.html">Interview Prep.</a>
+                <a href="{{ url_for('notes') }}">Notes</a>
+                <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="comming-soon.html">Terms</a>
-                <a href="comming-soon.html">Privacy</a>
+                <a href="{{ url_for('coming_soon') }}">Terms</a>
+                <a href="{{ url_for('coming_soon') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">GitHub</a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank"
+                    aria-label="YouTube Channel">YouTube</a>
             </div>
         </div>
-        <p>Made with ❤️ by NoteVibe Team</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
+
+    <!-- Deferred JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>
 
 </html>

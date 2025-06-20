@@ -1,16 +1,43 @@
 <!DOCTYPE html>
+<!--
+Author: NoteVibe Team
+Owner: Kartikeya Pandey
+Description: Services page outlines the range of offerings, including personalized guidance, consulting, and custom resources available through NoteVibe.
+-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Services - NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
-        content="Discover all the services offered by NoteVibe, including detailed programming notes, cheat sheets, interview prep, community forums, and more. Learn faster and smarter with our curated resources.">
+        content="Explore NoteVibe's comprehensive programming services including curated notes, cheat sheets, interview preparation resources, and project guides.">
+    <link rel="canonical" href="https://notevibe.com/services.html">
+    <meta name="theme-color" content="#08f7fe">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notevibe.com/services.html">
+    <meta property="og:title" content="Services - NoteVibe">
+    <meta property="og:description"
+        content="Explore NoteVibe's comprehensive programming services including curated notes, cheat sheets, interview preparation resources, and project guides.">
+    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notevibe.com/services.html">
+    <meta property="twitter:title" content="Services - NoteVibe">
+    <meta property="twitter:description"
+        content="Explore NoteVibe's comprehensive programming services including curated notes, cheat sheets, interview preparation resources, and project guides.">
+    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="manifest" href="/static/manifest.json">
     <style>
         :root {
             --primary-color: #10131a;
@@ -70,12 +97,12 @@
         }
 
         .navbar .logo {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
             background: var(--accent-gradient);
             background-clip: text;
             -webkit-background-clip: text;
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
@@ -122,17 +149,60 @@
             min-height: calc(100vh - var(--navbar-height));
             padding: 70px 15px 0 15px;
             background: linear-gradient(120deg, #10131a 60%, #08f7fe11 100%);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .services-card {
-            background: var(--card-bg);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            padding: 3rem 2.5rem 2.5rem 2.5rem;
-            max-width: 800px;
-            margin-top: 2rem;
-            border: 1.5px solid #09fbd333;
+            background: rgba(20, 22, 23, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(31, 38, 135, 0.37);
+            padding: 4rem 3rem;
+            max-width: 850px;
+            margin-top: 3rem;
+            border: 2px solid #09fbd3;
             text-align: center;
+            animation: slideUp 0.6s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-delay: 0.2s;
+        }
+
+        .service-image {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 12px rgba(8, 247, 254, 0.2));
+        }
+
+        .service-item:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .services-card h1 {
@@ -146,6 +216,7 @@
             -webkit-background-clip: text;
             color: transparent;
             filter: drop-shadow(0 2px 8px #08f7fe28);
+            animation: glowText 2s ease-in-out infinite alternate;
         }
 
         .service-list {
@@ -155,45 +226,77 @@
             justify-content: center;
             margin-top: 2.2rem;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInList 0.8s ease-out forwards;
+            animation-delay: 0.4s;
         }
 
         .service-item {
-            background: #18202a;
-            border-radius: 14px;
-            padding: 1.6rem 1.3rem;
-            min-width: 210px;
-            max-width: 260px;
-            flex: 1 1 210px;
-            box-shadow: 0 2px 14px #08f7fe14;
-            border: 1.5px solid #09fbd322;
+            background: #1a1f27;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            min-width: 220px;
+            max-width: 270px;
+            flex: 1 1 220px;
+            box-shadow: 0 6px 30px rgba(8, 247, 254, 0.3);
+            border: 2px solid #09fbd3;
             text-align: left;
-            transition: box-shadow 0.18s, border 0.18s, background 0.13s, transform 0.2s ease-in-out;
+            transition: all 0.3s ease-in-out;
             text-decoration: none;
             color: inherit;
             display: block;
             cursor: pointer;
-        }
-
-        .service-item:hover {
-            box-shadow: 0 4px 28px #08f7fe33;
-            border: 1.5px solid #09fbd3;
-            background: #202a38;
-            transform: translateY(-5px);
+            position: relative;
+            overflow: hidden;
         }
 
         .service-item h3 {
-            font-size: 1.18rem;
-            color: var(--accent-color);
+            font-size: 1.2rem;
+            color: #08f7fe;
             margin-bottom: 0.7rem;
             font-family: 'Roboto', Arial, sans-serif;
-            transition: color 0.13s;
+            transition: color 0.3s;
         }
 
         .service-item p {
             font-size: 1rem;
-            color: #e3e3e3;
+            color: #e0e0e0;
             font-weight: 500;
-            transition: color 0.13s;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 8px 40px rgba(8, 247, 254, 0.4);
+            border: 2px solid #08f7fe;
+            background: #202a38;
+            transform: translateY(-8px) scale(1.07);
+        }
+
+        .service-item:hover h3 {
+            color: #ffffff;
+        }
+
+        .service-item:hover p {
+            color: #ffffff;
+            opacity: 1;
+        }
+
+        .service-item button {
+            background-color: #08f7fe;
+            border: none;
+            border-radius: 8px;
+            color: #1a1f27;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 1rem;
+        }
+
+        .service-item button:hover {
+            background-color: #09fbd3;
+            transform: scale(1.05);
         }
 
         @media (max-width: 900px) {
@@ -205,8 +308,8 @@
                 font-size: 1.7rem;
             }
 
-            .navbar .logo {
-                font-size: 1.5rem;
+            .service-image {
+                max-width: 100px;
             }
 
             .service-list {
@@ -234,6 +337,15 @@
             .service-list {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .service-item {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .service-image {
+                max-width: 90px;
             }
         }
 
@@ -334,37 +446,107 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        /* Dropdown styles */
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="home.html" class="logo">NoteVibe&trade;</a>
+    <nav class="navbar" aria-label="Main Navigation">
+        <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <!-- Dropdown for Services -->
+            <li class="dropdown">
+                <a href="{{ url_for('services') }}" class="dropbtn active" aria-current="page">Services</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('notes') }}">Notes</a>
+                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
     <section class="services-section">
         <div class="services-card">
             <h1>Our Services</h1>
             <div class="service-list">
-                <a href="notes.html" class="service-item">
+                <a href="{{ url_for('notes') }}" class="service-item">
                     <h3>Programming Language Notes</h3>
                     <p>Comprehensive, concise, and regularly-updated notes for all major programming languages including
                         Python, c Java, C++, and more.</p>
                 </a>
-                <a href="cheatsheets.html" class="service-item">
+                <a href="{{ url_for('cheatsheets') }}" class="service-item">
                     <h3>Cheat Sheets</h3>
                     <p>Quick reference guides and cheat sheets to help you code faster and avoid common pitfalls.</p>
                 </a>
-                <a href="interview-prep.html" class="service-item">
+                <a href="{{ url_for('interview_prep') }}" class="service-item">
                     <h3>Interview Prep</h3>
                     <p>Exclusive guides to help you ace coding interviews and technical assessments.</p>
                 </a>
-                <a href="updates.html" class="service-item">
+                <a href="{{ url_for('updates') }}" class="service-item">
                     <h3>Regular Updates</h3>
                     <p>Stay ahead with monthly updates, new note releases, and trending tech topics.</p>
                 </a>
@@ -375,29 +557,30 @@
         <div class="footer-content">
             <div>
                 <h3>Main</h3>
-                <a href="home.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="my-gear.html">My Gear</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('my_gear') }}">My Gear</a>
             </div>
             <div>
                 <h3>Learn</h3>
-                <a href="notes.html">Notes</a>
-                <a href="cheatsheets.html">Cheatsheets</a>
-                <a href="interview-prep.html">Interview Prep.</a>
+                <a href="{{ url_for('notes') }}">Notes</a>
+                <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="comming-soon.html">Terms</a>
-                <a href="comming-soon.html">Privacy</a>
+                <a href="{{ url_for('coming_soon') }}">Terms</a>
+                <a href="{{ url_for('coming_soon') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
             </div>
         </div>
-        <p>Made with ❤️ by NoteVibe Team</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>
 
 </html>

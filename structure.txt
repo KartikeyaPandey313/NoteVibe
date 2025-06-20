@@ -1,30 +1,72 @@
-NoteVibe - Flask Static Site
-==========================
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║  NoteVibe – Project Structure                                             ║
+# ║  Author: NoteVibe Team                                                    ║
+# ║  Owner:  Kartikeya Pandey                                                 ║
+# ║                                                                            ║
+# ║  This living document maps every folder & file so newcomers (and future    ║
+# ║  you!) can immediately understand where things live and why. Feel free to  ║
+# ║  extend it whenever the project grows.                                     ║
+# ╚════════════════════════════════════════════════════════════════════════════╝
 
-Project Structure
-----------------
-.
-├── app.py                  # Main Flask application file
-├── requirements.txt         # Python dependencies
-├── structure.txt            # This file (project structure)
-├── templates/               # HTML templates
-│   ├── 404.html            # Error page
-│   ├── about.html          # About page
-│   ├── cheatsheets.html    # Cheatsheets page
-│   ├── comming-soon.html   # Coming soon page
-│   ├── contact.html        # Contact page
-│   ├── files/              # Nested templates
-│   ├── home.html           # Home page
-│   ├── interview-prep.html # Interview preparation page
-│   ├── my-gear.html        # My gear page
-│   ├── notes.html          # Notes page
-│   ├── services.html       # Services page
-│   └── updates.html        # Updates page
-└── static/                  # Static files directory
-    └── images/             # Image files
+NoteVibe/                          # Root project directory
+│
+├── app.py                         # Main Flask application (route + logic definitions)
+├── requirements.txt               # Python dependencies
+├── structure.txt                  # ← You are here – annotated project map
+├── README.md                      # Project documentation & onboarding guide
+├── LICENSE                        # License information
+├── .gitattributes                 # Git attributes configuration (e.g., line endings)
+│
+├── static/                        # Static assets served directly by Flask
+│   └── images/                    # Image assets
+│       ├── logo.png               # Project logo used in navbar & docs
+│       ├── github-icon.png        # GitHub icon shown in footer/social links
+│       ├── gmail-icon.png         # Gmail icon for contact links
+│       └── homepage-screenshot.png# Screenshot displayed in README.md
+│
+├── templates/                     # Jinja2 HTML templates
+│   ├── 404.html                   # Custom 404 error page
+│   ├── about.html                 # About page – mission & vision
+│   ├── cheatsheets.html           # Programming cheat-sheets
+│   ├── coming-soon.html           # Teaser page for upcoming features
+│   ├── contact.html               # Contact form & social links
+│   ├── home.html                  # Landing page
+│   ├── interview-prep.html        # Interview prep resources
+│   ├── my-gear.html               # Hardware / software we use
+│   ├── notes.html                 # Detailed programming notes
+│   ├── services.html              # Overview of NoteVibe services
+│   ├── updates.html               # Changelog & announcements
+│   └── files/                     # (Empty) – for future downloadable resources
+│
+└── … (additional files/folders will be documented as they appear)
 
-Application Description
-----------------------
-NoteVibe is a modern web application providing programming resources, notes, and community support.
-The application serves a static site with multiple pages for different types of content.
-Flask is used as the web framework to handle routing and template rendering. 
+#───────────────────────────────────────────────────────────────────────────────
+#  Directory Purposes
+#───────────────────────────────────────────────────────────────────────────────
+# • /static         – Assets such as images, CSS, and JavaScript delivered as-is
+# • /templates      – All Jinja2 templates rendered by Flask routes
+# • /templates/files– Placeholder for PDFs or additional downloadable resources
+#
+# Key files at a glance:
+#   app.py          Main application entry point
+#   requirements.txtDependency list for `pip install -r requirements.txt`
+#   README.md       Everything you need to install, run, and contribute
+#   structure.txt   This map – keep it updated when you add/rename files!
+#
+#───────────────────────────────────────────────────────────────────────────────
+#  Conventions & Notes
+#───────────────────────────────────────────────────────────────────────────────
+# • Every template and source file begins with a header comment crediting
+#   Author + Owner and explaining the file's role – great for quick skimming.
+# • Navigation links in templates leverage Flask's url_for for robust routing.
+# • The project is intentionally lightweight – no DB or login system yet.
+# • Add new static sub-folders (css/, js/, fonts/) as the project evolves.
+#
+#───────────────────────────────────────────────────────────────────────────────
+#  How To Extend This Document
+#───────────────────────────────────────────────────────────────────────────────
+# 1) Add a new folder/file? Copy its path and append a short description above.
+# 2) Keep alphabetical or logical grouping (static, templates, etc.).
+# 3) Commit structure.txt alongside your code so it never falls out of sync.
+#
+# Last updated: 2025-06-20 

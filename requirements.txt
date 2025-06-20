@@ -1,2 +1,12 @@
-flask==2.3.3
-gunicorn
+# ╔════════════════════════════════════════════════════╗
+# ║   NoteVibe – Python Dependency Manifest           ║
+# ║   Author: NoteVibe Team                           ║
+# ║   Owner:  Kartikeya Pandey                        ║
+# ╚════════════════════════════════════════════════════╝
+Flask>=2.2.0        # Core web framework powering all routes & views
+# Add other dependencies below as needed
+gunicorn            # Production-grade WSGI server (Heroku, Render, etc.)
+python-dotenv       # Load .env secrets during local development
+smtplib             # Stdlib – send e-mails (contact form)
+logging             # Stdlib – application logging
+warnings            # Stdlib – suppress or format CLI warnings
