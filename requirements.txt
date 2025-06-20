@@ -3,10 +3,7 @@
 # ║   Author: NoteVibe Team                           ║
 # ║   Owner:  Kartikeya Pandey                        ║
 # ╚════════════════════════════════════════════════════╝
-Flask>=2.2.0        # Core web framework powering all routes & views
+Flask==3.1.1        # Core web framework – latest stable (2025-05-13)
 # Add other dependencies below as needed
-gunicorn            # Production-grade WSGI server (Heroku, Render, etc.)
-python-dotenv       # Load .env secrets during local development
-smtplib             # Stdlib – send e-mails (contact form)
-logging             # Stdlib – application logging
-warnings            # Stdlib – suppress or format CLI warnings
+gunicorn==23.0.0    # Production-grade WSGI server (2024-08-10)
+python-dotenv==1.1.0# Load .env secrets during local development (2025-03-25)
