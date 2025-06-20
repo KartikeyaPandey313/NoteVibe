@@ -6,4 +6,4 @@
 Flask==3.1.1        # Core web framework – latest stable (2025-05-13)
 # Add other dependencies below as needed
 gunicorn==23.0.0    # Production-grade WSGI server (2024-08-10)
-python-dotenv==1.1.0# Load .env secrets during local development (2025-03-25)
+python-dotenv==1.0.1    # Load .env secrets during local development (2025-03-25)
