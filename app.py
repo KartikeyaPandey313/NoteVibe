@@ -1,16 +1,9 @@
 """
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Flask Web Application                                          ║
-║ Purpose: Main entry point defining routes and email handling.            ║
-║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com   ║
-╚═══════════════════════════════════════════════════════════════════════════╝
-
-This file serves as the main entry point for the Flask application, defining routes
-and handling HTTP requests for all pages of the NoteVibe website.
-
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Version: 1.0.1
+╔═══════════════════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Flask Web Application                                                     ║
+║ Purpose: Main entry point defining routes and email handling.                        ║
+║ Author: NoteVibe Team | Proprietary License | https://www.notevibe.onrender.com      ║
+╚═══════════════════════════════════════════════════════════════════════════════════════╝
 """
 
 from flask import Flask, render_template, request, redirect, url_for, flash
