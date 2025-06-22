@@ -1,4 +1,4 @@
-# NoteVibe – Learn, Code, Thrive (v1.0.1)
+# NoteVibe – Where Coders Catch the Vibe (v1.0.1)
 
 ![License: Proprietary](https://img.shields.io/badge/license-NoteVibe_Proprietary-red)
 
