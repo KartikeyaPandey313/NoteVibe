@@ -1,8 +1,8 @@
-# ╔═══════════════════════════════════════════════════════════════════════╗
-# ║ NoteVibe – Git Ignore File                                          ║
-# ║ Purpose: Specifies untracked files to ignore in version control.     ║
-# ║ Author: NoteVibe Team | Proprietary License | https://notevibe.onrender.com ║
-# ╚═══════════════════════════════════════════════════════════════════════╝
+# ╔═══════════════════════════════════════════════════════════════════════════════╗
+# ║ NoteVibe – Git Ignore File                                                   ║
+# ║ Purpose: Specifies untracked files to ignore in version control.             ║
+# ║ Author: NoteVibe Team | Proprietary License | https://notevibe.onrender.com  ║
+# ╚═══════════════════════════════════════════════════════════════════════════════╝
 
 # Environment / secrets
 .env

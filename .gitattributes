@@ -1,8 +1,8 @@
-# ╔═══════════════════════════════════════════════════════════════════════╗
-# ║ NoteVibe – Git Attributes File                                       ║
-# ║ Purpose: Normalizes line endings & encoding across all contributors.  ║
-# ║ Author: NoteVibe Team | Proprietary License | https://notevibe.onrender.com ║
-# ╚═══════════════════════════════════════════════════════════════════════╝
+# ╔═══════════════════════════════════════════════════════════════════════════════╗
+# ║ NoteVibe – Git Attributes File                                               ║
+# ║ Purpose: Normalizes line endings & encoding across all contributors.         ║
+# ║ Author: NoteVibe Team | Proprietary License | https://notevibe.onrender.com  ║
+# ╚═══════════════════════════════════════════════════════════════════════════════╝
 
 # Auto detect text files and perform LF normalization
 * text=auto
