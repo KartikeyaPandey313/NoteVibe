@@ -1,172 +1,178 @@
-# NoteVibe
+# NoteVibe – Learn, Code, Thrive (v1.0.1)
 
-<!--
-╔═════════════════════════════════════════════════════════╗
-║                    N O T E V I B E                     ║
-║   A Beautiful Programming Knowledge & Notes Platform   ║
-╚═════════════════════════════════════════════════════════╝
+![License: Proprietary](https://img.shields.io/badge/license-NoteVibe_Proprietary-red)
 
-Author: NoteVibe Team
-Owner:  Kartikeya Pandey
-Description: NoteVibe is a Flask-powered knowledge hub offering concise programming notes, cheat-sheets, and interview-prep resources. This README walks you through installation, structure, and contribution guidelines.
--->
+<p align="center">
+  <img src="static/images/Homepage-screenshot.png" alt="NoteVibe Home" width="780">
+</p>
 
-![NoteVibe Logo](static/images/logo.png)
+> **NoteVibe** is a sleek, neon-themed learning hub packed with concise programming notes, printable cheatsheets, interview-prep guides, and more – all woven together with Python + Flask.  
+> The public instance lives at **<https://notevibe.onrender.com>**.
 
-**Author:** NoteVibe Team  
-**Owner:** Kartikeya Pandey
+---
 
-A modern Flask web application providing programming resources, notes, cheatsheets, interview prep, and more. Built for learners and developers who want concise, high-quality study material and a smooth user experience.
+## 📑 Table of Contents
+
+1. [Key Features](#key-features)  
+2. [Screenshots](#screenshots)  
+3. [How It Works (Under the Hood)](#how-it-works-under-the-hood)  
+4. [Tech Stack](#tech-stack)  
+5. [Local Setup – Personal Use Only](#local-setup--personal-use-only)  
+6. [Project Structure](#project-structure)  
+7. [Tests](#tests)  
+8. [License Summary](#license-summary)  
+9. [Commercial Licensing & Contact](#commercial-licensing--contact)
+
+---
+
+## Key Features
+
+| Category | Highlights |
+|----------|------------|
+| **Notes** | • Bite-sized explanations of core CS & Python topics<br>• Clean typography & dark-cyber aesthetic |
+| **Cheatsheets** | • Printable PDFs & quick-reference tables<br>• Syntax reminders & command palettes |
+| **Interview Prep** | • DSA patterns, complexity cheats, & popular questions<br>• Step-by-step solutions & strategy tips |
+| **Dynamic Contact Form** | • Users can reach out – messages are relayed via Gmail SMTP in real-time |
+| **PWA Flair** | • Custom favicon, manifest, and offline-friendly assets |
+| **Responsive Design** | • Looks stunning on 4-inch phones all the way to ultrawides |
+| **Neon Theme** | • CSS-only glassmorphism & animated gradients – zero bulky UI frameworks |
+
+---
 
 ## Screenshots
 
-![Homepage Screenshot](static/images/homepage-screenshot.png)
+| Page | Route | Preview |
+|------|-------|---------|
+| Home | `/` | ![Home](static/images/Homepage-screenshot.png) |
+| Notes | `/notes` | ![Notes](static/images/Notespage-screenshot.png) |
+| Cheatsheets | `/cheatsheets` | ![Cheatsheets](static/images/Cheatsheetspage-screenshot.png) |
+| Interview Prep | `/interview-prep` | ![Interview Prep](static/images/Interview-preppage-screenshot.png) |
+| Services | `/services` | ![Services](static/images/Servicespage-screenshot.png) |
+| My Gear | `/my-gear` | ![My Gear](static/images/My-Gearpage-screenshot.png) |
+| Updates | `/updates` | ![Updates](static/images/Updatespage-screenshot.png) |
+| Contact | `/contact` | ![Contact](static/images/Contactpage-screenshot.png) |
+| 404 Error | N/A | ![404](static/images/404-Errorpage-screenshot.png) |
+
+> *All screenshots are shipped in */static/images/* so you can open them directly if the table preview cuts them off.*
 
 ---
 
-## 🚧 Project Status
-**NoteVibe is currently under development.** You may encounter minor issues or unfinished features. If you find a bug or have suggestions, please [contact us](mailto:pandeykartikeya313@gmail.com) — your feedback is invaluable as we continue to grow and improve.
+## How It Works (Under the Hood)
+
+```mermaid
+flowchart TD
+    subgraph Browser
+        A[User] -- HTTP/HTTPS --> B(Flask Server)
+    end
+    subgraph Server
+        B -- Jinja2 render --> C{Template}
+        B -- SMTP --> D[Gmail]
+        C --> E[HTML/CSS/JS]
+    end
+    A <-- 200 OK -- E
+```
+
+1. **Routing** – `app.py` registers a route for every page (`/notes`, `/cheatsheets`, etc.).  
+2. **Template Rendering** – Each route returns a Jinja2 template from */templates/*.  
+3. **Contact Workflow** – The form posts to `/contact`, the server validates data, then uses Gmail SMTP to shoot an email straight to the owner's inbox.  
+4. **Styling** – All UI/UX magic lives in `static/css/main.css` + minimal in-page `<style>` blocks.  
+5. **Assets** – Images & icons live under `static/images/`; no external CDNs aside from Google Fonts.
 
 ---
 
-## Features
-- Programming notes for Python, C, C++, Java, and more
-- Cheatsheets for quick reference
-- Interview prep resources
-- Responsive, modern UI
-- Regular updates and new content
-- Contact and feedback system
+## Tech Stack
+
+| Layer | Tooling |
+|-------|---------|
+| **Backend** | Python 3.11, Flask 3.1 (Jinja2, Werkzeug) |
+| **Frontend** | HTML5, CSS3 (Flexbox + Grid, glassmorphism), vanilla JS |
+| **Email** | Gmail SMTP via `smtplib` + `email.mime` |
+| **Dev Tooling** | python-dotenv, PowerShell scripts, `venv`, `pip` |
+| **Prod Server** | Gunicorn (not committed, but recommended) |
+| **Testing** | `test_contact.py` – tiny smoke-suite to ensure env vars & contact route work |
 
 ---
 
-## Requirements
-All dependencies are listed in `requirements.txt` (see below for the latest update).
+## Local Setup – Personal Use Only
 
----
+```bash
+# 1. Clone the repo
+$ git clone https://github.com/YourUser/NoteVibe.git && cd NoteVibe
 
-## Setup & Usage
-1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Set up email functionality (optional):
-   - Create a `.env` file in the project root
-   - Add your Gmail credentials:
-     ```
-     EMAIL_ADDRESS=your-email@gmail.com
-     EMAIL_PASSWORD=your-app-password
-     APP_SECRET_KEY=your-secret-key-here
-     ```
-   - For Gmail, use an App Password (not your regular password)
-   - Enable 2-factor authentication and generate an App Password
-4. Run the app: `python app.py`
-5. Open your browser at `http://localhost:5000`
+# 2. (Optional) Create & activate a virtual env
+$ python -m venv .venv && source .venv/Scripts/activate  # PowerShell
 
-## Contact Form & Email Setup
-The contact form sends emails to `pandeykartikeya313@gmail.com` when users submit messages. To enable this functionality:
+# 3. Install Python dependencies
+$ pip install -r requirements.txt
 
-1. **Gmail Setup:**
-   - Enable 2-factor authentication on your Gmail account
-   - Generate an App Password (Google Account → Security → App Passwords)
-   - Use the App Password in your `.env` file (not your regular password)
+# 4. Add your secrets to a .env file (Gmail App Password recommended)
+EMAIL_ADDRESS=your-gmail@example.com
+EMAIL_PASSWORD=your-16-char-app-password
+APP_SECRET_KEY=random-super-secret
 
-2. **Environment Variables:**
-   - `EMAIL_ADDRESS`: Your Gmail address
-   - `EMAIL_PASSWORD`: Your Gmail App Password
-   - `APP_SECRET_KEY`: A random string for Flask sessions
+# 5. Fire up the development server
+$ python app.py
 
-3. **Email Format:**
-   The contact form sends emails with this format:
-   ```
-   Name: [user's name]
-   Email: [user's email]
-   Message:
-   [user's message]
-   ```
+# 6. Visit
+http://localhost:5000
+```
 
-4. **Security:**
-   - Never commit your `.env` file to version control
-   - The `.env` file is already in `.gitignore`
-   - Use App Passwords for production security
+> **Important ⚠️** – Cloning the repo does **not** grant you the right to deploy it publicly. See [License Summary](#license-summary).
 
 ---
 
 ## Project Structure
-See `structure.txt` for a detailed breakdown of all files and their purposes.
-- Each page (home, about, notes, etc.) is a dedicated Jinja2 template.
 
----
-
-## Contributing
-Pull requests and suggestions are welcome! Please open an issue or contact us directly.
-
----
-
-## License
-See [LICENSE](LICENSE) for details.
-
----
-
-## Contact
-- Github: [KartikeyaPandey313](https://github.com/KartikeyaPandey313/)
-- Youtube: [Kartikeya ×͜×](https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw)
-
----
-
-## ✨ Features
-- Beautiful, modern UI with responsive design
-- Home, About, Services, Notes, Cheatsheets, Interview Prep, Updates, Contact, My Gear, and Coming Soon pages
-- Custom 404 error page
-- Organized project structure with Jinja2 templates and static assets
-- Easy to extend and customize for your own needs
-- All navigation uses Flask's `url_for` for robust routing
-- Smooth dropdown animation for Services tab on all pages
-- Social links (GitHub, YouTube) open in a new tab
-- **Contact form with email functionality**
-
----
-
-## 🗂️ Project Structure
-See [`structure.txt`](structure.txt) for a detailed, commented overview of all files and folders.
-
----
-
-## 🖼️ Logo
-The project logo is included in `static/images/logo.png` and used in the navbar and documentation. To use it in your own templates:
-```html
-<img src="{{ url_for('static', filename='images/logo.png') }}" alt="NoteVibe Logo">
+```text
+NoteVibe/
+├── app.py               # Main Flask application (routes, email, error handling)
+├── templates/           # Jinja2 HTML templates (one per route)
+├── static/
+│   ├── css/
+│   │   └── main.css     # Central stylesheet
+│   ├── images/          # Screenshots, favicon, og-images
+│   └── js/
+│       └── main.js      # (Placeholder for deferred scripts)
+├── requirements.txt     # Locked Python dependencies
+├── LICENSE              # Proprietary license document
+├── README.md            # You're reading it ✔
+├── structure.txt        # Human-readable project map
+└── test_contact.py      # CLI smoke tests (imports, env vars, contact route)
 ```
 
 ---
 
-## 📁 Key Files
-- `app.py` — Main Flask app, all routes and backend logic
-- `requirements.txt` — Python dependencies (`flask`, `gunicorn`, `python-dotenv`)
-- `structure.txt` — Full project structure with comments
-- `templates/` — All HTML templates (see structure.txt for details)
-- `static/images/` — All image assets (logo, icons)
+## Tests
+
+Run the built-in contact smoke test:
+
+```bash
+$ python test_contact.py
+```
+
+You should see green check-marks for imports, env vars, and route discovery before deploying.
 
 ---
 
-## 🤝 Contributing
-Pull requests and suggestions are welcome! Please open an issue or contact the author for major changes or collaborations.
+## License Summary
+
+This codebase is protected by the **NoteVibe Proprietary License** (see full text in [`LICENSE`](LICENSE)).
+
+• You may **read** the code and reuse *up to 10 lines* in educational material **with attribution**.  
+• **Deployment, redistribution, or commercial use** requires a paid license (monthly or lifetime).  
+• Unauthorized public hosting may trigger DMCA takedowns or legal action.
 
 ---
 
-## 📜 License
-This project is licensed under a custom license (see [LICENSE](LICENSE) file). **Personal and educational use only.** For commercial use or redistribution, contact the author.
+## Commercial Licensing & Contact
+
+Interested in using NoteVibe on a public server, in client work, or in a commercial course?
+
+📧 **pandeykartikeya313@gmail.com**  
+Licenses are flexible – let's chat.
 
 ---
 
-**Author:** Kartikeya Pandey / NoteVibe Team  
-Contact: [pandeykartikeya313@gmail.com](mailto:pandeykartikeya313@gmail.com)
-
----
-
-## How to Add More Dependencies or Documentation Details
-
-- To add more Python dependencies, add them to requirements.txt (one per line).
-- If you add new features that require extra packages, always update requirements.txt.
-- To enhance documentation, you can:
-    - Add more setup or deployment instructions
-    - Add screenshots or demo links (see above)
-    - Add API documentation, contribution guidelines, or bug reporting instructions
-    - Expand file/folder descriptions in structure.txt if you add new files
+<div align="center">
+Made with ❤️ in India • © 2025 Kartikeya Pandey
+</div>

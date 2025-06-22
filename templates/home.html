@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: This home page serves as the landing page for NoteVibe, welcoming users and showcasing key sections, navigation, and a modern interface to explore coding resources.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Home Page                                                     ║
+║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -569,6 +571,8 @@ Description: This home page serves as the landing page for NoteVibe, welcoming u
 
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
     <main>
@@ -747,8 +751,8 @@ Description: This home page serves as the landing page for NoteVibe, welcoming u
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

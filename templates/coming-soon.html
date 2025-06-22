@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: Coming soon page teasing features currently under development and providing a call-to-action for users to stay updated.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Coming Soon Page                                              ║
+║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -374,6 +376,8 @@ Description: Coming soon page teasing features currently under development and p
             <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
     <section class="coming-soon-section">
@@ -422,8 +426,8 @@ Description: Coming soon page teasing features currently under development and p
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

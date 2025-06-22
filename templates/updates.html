@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: Updates page presents the latest announcements, release notes, and community news for NoteVibe users.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Updates Page                                                  ║
+║ Purpose: Displays changelog and platform news updates.                   ║
+║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -349,6 +351,8 @@ Description: Updates page presents the latest announcements, release notes, and 
             <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
     <section class="updates-section">
@@ -385,8 +389,8 @@ Description: Updates page presents the latest announcements, release notes, and 
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

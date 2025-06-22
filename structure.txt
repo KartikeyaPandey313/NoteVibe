@@ -2,6 +2,7 @@
 # ║  NoteVibe – Project Structure                                             ║
 # ║  Author: NoteVibe Team                                                    ║
 # ║  Owner:  Kartikeya Pandey                                                 ║
+# ║  License: Proprietary                                                   ║
 # ║                                                                            ║
 # ║  This living document maps every folder & file so newcomers (and future    ║
 # ║  you!) can immediately understand where things live and why. Feel free to  ║
@@ -64,7 +65,7 @@ NoteVibe/                          # Root project directory
 # • Navigation links in templates leverage Flask's url_for for robust routing.
 # • The project is intentionally lightweight – no DB or login system yet.
 # • Add new static sub-folders (css/, js/, fonts/) as the project evolves.
-# • Contact form sends emails to pandeykartikeya313@gmail.com using Gmail SMTP.
+# • Contact form sends emails via the `EMAIL_ADDRESS` defined in the .env file.
 # • Environment variables (.env file) required for email functionality.
 #
 #───────────────────────────────────────────────────────────────────────────────
@@ -74,4 +75,4 @@ NoteVibe/                          # Root project directory
 # 2) Keep alphabetical or logical grouping (static, templates, etc.).
 # 3) Commit structure.txt alongside your code so it never falls out of sync.
 #
-# Last updated: 2025-01-27 (Added contact form email functionality) 
+# Last updated: 2025-01-27 

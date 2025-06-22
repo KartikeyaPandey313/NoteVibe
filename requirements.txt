@@ -2,6 +2,7 @@
 # ║   NoteVibe – Python Dependency Manifest           ║
 # ║   Author: NoteVibe Team                           ║
 # ║   Owner:  Kartikeya Pandey                        ║
+# ║   License: Proprietary                           ║
 # ╚════════════════════════════════════════════════════╝
 Flask==3.1.1        # Core web framework – latest stable (2025-05-13)
 # Add other dependencies below as needed

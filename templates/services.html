@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: Services page outlines the range of offerings, including personalized guidance, consulting, and custom resources available through NoteVibe.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Services Page                                                 ║
+║ Purpose: Overview of available learning services and site sections.      ║
+║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -527,6 +529,8 @@ Description: Services page outlines the range of offerings, including personaliz
             </li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
     <section class="services-section">
@@ -569,8 +573,8 @@ Description: Services page outlines the range of offerings, including personaliz
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

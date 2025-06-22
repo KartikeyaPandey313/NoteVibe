@@ -1,14 +1,16 @@
 """
-NoteVibe - Flask Web Application
---------------------------------
-A modern web application providing programming resources, notes, and community support.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Flask Web Application                                          ║
+║ Purpose: Main entry point defining routes and email handling.            ║
+║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com   ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 
 This file serves as the main entry point for the Flask application, defining routes
 and handling HTTP requests for all pages of the NoteVibe website.
 
 Author: NoteVibe Team
 Owner: Kartikeya Pandey
-Version: 1.0.0
+Version: 1.0.1
 """
 
 from flask import Flask, render_template, request, redirect, url_for, flash
@@ -42,7 +44,13 @@ app.secret_key = os.getenv("APP_SECRET_KEY", os.urandom(24).hex())  # Fallback k
 
 # Email configuration
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("GMAIL_PASSWORD")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+
+# Make email address available in all Jinja templates
+@app.context_processor
+def inject_site_email():
+    """Inject the public contact email into every template as 'site_email'."""
+    return dict(site_email=EMAIL_ADDRESS)
 
 # ── Logging Configuration ───────────────────────────────────────────────────
 # Configure a root logger so that important events are printed to stdout.
@@ -119,7 +127,7 @@ def contact():
             # Build email
             msg = MIMEMultipart()
             msg['From'] = EMAIL_ADDRESS
-            msg['To'] = 'pandeykartikeya313@gmail.com'
+            msg['To'] = EMAIL_ADDRESS  # Send to owner inbox
             msg['Subject'] = f'New Contact Form Submission from {name}'
 
             # Format email content as requested
@@ -160,6 +168,16 @@ def my_gear():
 def coming_soon():
     """Render the coming soon page for features under development."""
     return render_template('coming-soon.html')
+
+@app.route('/terms')
+def terms():
+    """Render the terms of service page."""
+    return render_template('terms.html')
+
+@app.route('/privacy')
+def privacy():
+    """Render the privacy policy page."""
+    return render_template('privacy.html')
 
 # Run the application
 if __name__ == '__main__':

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: Interview preparation page offering curated resources, common questions, and useful tips for coding interviews.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Interview Prep Page                                           ║
+║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -343,6 +345,8 @@ Description: Interview preparation page offering curated resources, common quest
 
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
 
@@ -377,8 +381,8 @@ Description: Interview preparation page offering curated resources, common quest
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

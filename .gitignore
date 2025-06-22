@@ -1,7 +1,20 @@
- <!-- ╔═══════════════════════════════════════════╗
-      ║  Author: NoteVibe Team                   ║
-      ║  Owner:  Kartikeya Pandey                ║
-      ║  Page:   Gitignore - Ignore all files    ║
-      ╚═══════════════════════════════════════════╝ -->
+# ╔═══════════════════════════════════════════════════════════════════════╗
+# ║ NoteVibe – Git Ignore File                                          ║
+# ║ Purpose: Specifies untracked files to ignore in version control.     ║
+# ║ Author: NoteVibe Team | Proprietary License | https://notevibe.onrender.com ║
+# ╚═══════════════════════════════════════════════════════════════════════╝
 
+# Environment / secrets
 .env
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Mac / Windows OS files
+.DS_Store
+Thumbs.db

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: This about page shares the mission, vision, and background story of NoteVibe, highlighting the team and platform objectives.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – About Page                                                    ║
+║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -419,6 +421,8 @@ Description: This about page shares the mission, vision, and background story of
 
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}" class="active" aria-current="page">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
 
@@ -456,8 +460,8 @@ Description: This about page shares the mission, vision, and background story of
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>

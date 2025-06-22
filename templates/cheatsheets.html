@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
-Author: NoteVibe Team
-Owner: Kartikeya Pandey
-Description: Cheatsheets page providing quick-reference coding cheat sheets and handy programming tips for multiple languages.
+╔═══════════════════════════════════════════════════════════════════════════╗
+║ NoteVibe – Cheatsheets Page                                              ║
+║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+╚═══════════════════════════════════════════════════════════════════════════╝
 -->
 <html lang="en">
 
@@ -363,6 +365,20 @@ Description: Cheatsheets page providing quick-reference coding cheat sheets and 
             transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* New: left-aligned links inside dropdown */
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
@@ -390,6 +406,8 @@ Description: Cheatsheets page providing quick-reference coding cheat sheets and 
 
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
         </ul>
     </nav>
     <section class="cheatsheets-section">
@@ -420,8 +438,8 @@ Description: Cheatsheets page providing quick-reference coding cheat sheets and 
             </div>
             <div>
                 <h3>Legal</h3>
-                <a href="{{ url_for('coming_soon') }}">Terms</a>
-                <a href="{{ url_for('coming_soon') }}">Privacy</a>
+                <a href="{{ url_for('terms') }}">Terms</a>
+                <a href="{{ url_for('privacy') }}">Privacy</a>
             </div>
             <div>
                 <h3>Social</h3>
