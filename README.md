@@ -80,14 +80,14 @@
 | 📄 Page | 🛣️ Route | 🖼️ Preview |
 |---------|-----------|------------|
 | 🏠 Home | `/` | ![Home](static/images/homepage-screenshot.png) |
-| 📝 Notes | `/notes` | ![Notes](static/images/notespage-screenshot.png) |
-| 📋 Cheatsheets | `/cheatsheets` | ![Cheatsheets](static/images/cheatsheetspage-screenshot.png) |
-| 💼 Interview Prep | `/interview-prep` | ![Interview Prep](static/images/interview-preppage-screenshot.png) |
-| 🛠️ Services | `/services` | ![Services](static/images/servicespage-screenshot.png) |
-| 🖥️ My Gear | `/my-gear` | ![My Gear](static/images/my-gearpage-screenshot.png) |
-| 📢 Updates | `/updates` | ![Updates](static/images/updatespage-screenshot.png) |
-| 📧 Contact | `/contact` | ![Contact](static/images/contactpage-screenshot.png) |
-| ❌ 404 Error | N/A | ![404](static/images/404-errorpage-screenshot.png) |
+| 📝 Notes | `/notes` | ![Notes](static/images/Notespage-screenshot.png) |
+| 📋 Cheatsheets | `/cheatsheets` | ![Cheatsheets](static/images/Cheatsheetspage-screenshot.png) |
+| 💼 Interview Prep | `/interview-prep` | ![Interview Prep](static/images/Interview-preppage-screenshot.png) |
+| 🛠️ Services | `/services` | ![Services](static/images/Servicespage-screenshot.png) |
+| 🖥️ My Gear | `/my-gear` | ![My Gear](static/images/My-gearpage-screenshot.png) |
+| 📢 Updates | `/updates` | ![Updates](static/images/Updatespage-screenshot.png) |
+| 📧 Contact | `/contact` | ![Contact](static/images/Contactpage-screenshot.png) |
+| ❌ 404 Error | N/A | ![404](static/images/404-Errorpage-screenshot.png) |
 
 > *All screenshots are shipped in */static/images/* so you can open them directly if the table preview cuts them off.*
 
@@ -236,14 +236,14 @@ NoteVibe/                          # 🏠 Root directory
 │       ├── footer.png             # 🦶 Footer (30KB)
 │       └── 📸 Screenshots/        # 📱 Page previews
 │           ├── homepage-screenshot.png
-│           ├── notespage-screenshot.png
-│           ├── cheatsheetspage-screenshot.png
-│           ├── interview-preppage-screenshot.png
-│           ├── servicespage-screenshot.png
-│           ├── my-gearpage-screenshot.png
-│           ├── updatespage-screenshot.png
-│           ├── contactpage-screenshot.png
-│           └── 404-errorpage-screenshot.png
+│           ├── Notespage-screenshot.png
+│           ├── Cheatsheetspage-screenshot.png
+│           ├── Interview-preppage-screenshot.png
+│           ├── Servicespage-screenshot.png
+│           ├── My-gearpage-screenshot.png
+│           ├── Updatespage-screenshot.png
+│           ├── Contactpage-screenshot.png
+│           └── 404-Errorpage-screenshot.png
 │
 ├── 📄 Templates
 │   ├── 🏠 Main Pages
