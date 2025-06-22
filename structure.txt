@@ -10,12 +10,14 @@
 
 NoteVibe/                          # Root project directory
 │
-├── app.py                         # Main Flask application (route + logic definitions)
-├── requirements.txt               # Python dependencies
+├── app.py                         # Main Flask application (routes + email functionality)
+├── requirements.txt               # Python dependencies (Flask, gunicorn, python-dotenv)
 ├── structure.txt                  # ← You are here – annotated project map
 ├── README.md                      # Project documentation & onboarding guide
 ├── LICENSE                        # License information
 ├── .gitattributes                 # Git attributes configuration (e.g., line endings)
+├── .gitignore                     # Git ignore rules (.env files, etc.)
+├── test_contact.py                # Test script for contact form functionality
 │
 ├── static/                        # Static assets served directly by Flask
 │   └── images/                    # Image assets
@@ -29,7 +31,7 @@ NoteVibe/                          # Root project directory
 │   ├── about.html                 # About page – mission & vision
 │   ├── cheatsheets.html           # Programming cheat-sheets
 │   ├── coming-soon.html           # Teaser page for upcoming features
-│   ├── contact.html               # Contact form & social links
+│   ├── contact.html               # Contact form with email functionality & flash messages
 │   ├── home.html                  # Landing page
 │   ├── interview-prep.html        # Interview prep resources
 │   ├── my-gear.html               # Hardware / software we use
@@ -48,10 +50,11 @@ NoteVibe/                          # Root project directory
 # • /templates/files– Placeholder for PDFs or additional downloadable resources
 #
 # Key files at a glance:
-#   app.py          Main application entry point
+#   app.py          Main application entry point with email functionality
 #   requirements.txtDependency list for `pip install -r requirements.txt`
 #   README.md       Everything you need to install, run, and contribute
 #   structure.txt   This map – keep it updated when you add/rename files!
+#   test_contact.py Test script for contact form email functionality
 #
 #───────────────────────────────────────────────────────────────────────────────
 #  Conventions & Notes
@@ -61,6 +64,8 @@ NoteVibe/                          # Root project directory
 # • Navigation links in templates leverage Flask's url_for for robust routing.
 # • The project is intentionally lightweight – no DB or login system yet.
 # • Add new static sub-folders (css/, js/, fonts/) as the project evolves.
+# • Contact form sends emails to pandeykartikeya313@gmail.com using Gmail SMTP.
+# • Environment variables (.env file) required for email functionality.
 #
 #───────────────────────────────────────────────────────────────────────────────
 #  How To Extend This Document
@@ -69,4 +74,4 @@ NoteVibe/                          # Root project directory
 # 2) Keep alphabetical or logical grouping (static, templates, etc.).
 # 3) Commit structure.txt alongside your code so it never falls out of sync.
 #
-# Last updated: 2025-06-20 
+# Last updated: 2025-01-27 (Added contact form email functionality) 

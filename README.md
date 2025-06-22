@@ -47,8 +47,45 @@ All dependencies are listed in `requirements.txt` (see below for the latest upda
 ## Setup & Usage
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run the app: `python app.py`
-4. Open your browser at `http://localhost:5000`
+3. Set up email functionality (optional):
+   - Create a `.env` file in the project root
+   - Add your Gmail credentials:
+     ```
+     EMAIL_ADDRESS=your-email@gmail.com
+     EMAIL_PASSWORD=your-app-password
+     APP_SECRET_KEY=your-secret-key-here
+     ```
+   - For Gmail, use an App Password (not your regular password)
+   - Enable 2-factor authentication and generate an App Password
+4. Run the app: `python app.py`
+5. Open your browser at `http://localhost:5000`
+
+## Contact Form & Email Setup
+The contact form sends emails to `pandeykartikeya313@gmail.com` when users submit messages. To enable this functionality:
+
+1. **Gmail Setup:**
+   - Enable 2-factor authentication on your Gmail account
+   - Generate an App Password (Google Account → Security → App Passwords)
+   - Use the App Password in your `.env` file (not your regular password)
+
+2. **Environment Variables:**
+   - `EMAIL_ADDRESS`: Your Gmail address
+   - `EMAIL_PASSWORD`: Your Gmail App Password
+   - `APP_SECRET_KEY`: A random string for Flask sessions
+
+3. **Email Format:**
+   The contact form sends emails with this format:
+   ```
+   Name: [user's name]
+   Email: [user's email]
+   Message:
+   [user's message]
+   ```
+
+4. **Security:**
+   - Never commit your `.env` file to version control
+   - The `.env` file is already in `.gitignore`
+   - Use App Passwords for production security
 
 ---
 
@@ -83,6 +120,7 @@ See [LICENSE](LICENSE) for details.
 - All navigation uses Flask's `url_for` for robust routing
 - Smooth dropdown animation for Services tab on all pages
 - Social links (GitHub, YouTube) open in a new tab
+- **Contact form with email functionality**
 
 ---
 
@@ -101,7 +139,7 @@ The project logo is included in `static/images/logo.png` and used in the navbar 
 
 ## 📁 Key Files
 - `app.py` — Main Flask app, all routes and backend logic
-- `requirements.txt` — Python dependencies (`flask`, `gunicorn`)
+- `requirements.txt` — Python dependencies (`flask`, `gunicorn`, `python-dotenv`)
 - `structure.txt` — Full project structure with comments
 - `templates/` — All HTML templates (see structure.txt for details)
 - `static/images/` — All image assets (logo, icons)
@@ -131,4 +169,4 @@ Contact: [pandeykartikeya313@gmail.com](mailto:pandeykartikeya313@gmail.com)
     - Add more setup or deployment instructions
     - Add screenshots or demo links (see above)
     - Add API documentation, contribution guidelines, or bug reporting instructions
-    - Expand file/folder descriptions in structure.txt if you add new files 
+    - Expand file/folder descriptions in structure.txt if you add new files

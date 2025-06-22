@@ -100,9 +100,15 @@ def updates():
 def contact():
     """Render the contact page with contact information and form."""
     if request.method == 'POST':
-        name = request.form.get('name', 'Anonymous')
-        email = request.form.get('email', 'No email provided')
-        message = request.form.get('message', '')
+        # Get form data
+        name = request.form.get('name', '').strip()
+        email = request.form.get('email', '').strip()
+        message = request.form.get('message', '').strip()
+
+        # Validate form inputs - all fields required
+        if not name or not email or not message:
+            flash('All fields are required. Please fill in name, email, and message.', 'error')
+            return redirect(url_for('contact'))
 
         # Verify that email credentials are available before attempting to send
         if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
@@ -113,26 +119,27 @@ def contact():
             # Build email
             msg = MIMEMultipart()
             msg['From'] = EMAIL_ADDRESS
-            msg['To'] = 'pandeykartikey103@gmail.com'  # Send to self; adjust if forwarding elsewhere
+            msg['To'] = 'pandeykartikeya313@gmail.com'
             msg['Subject'] = f'New Contact Form Submission from {name}'
 
-            body = f'Name: {name}\nEmail: {email}\n\nMessage:\n{message}'
+            # Format email content as requested
+            body = f'Name: {name}\nEmail: {email}\nMessage:\n{message}'
             msg.attach(MIMEText(body, 'plain'))
 
-            # Connect & send
+            # Connect & send using TLS
             with smtplib.SMTP('smtp.gmail.com', 587) as server:
                 server.starttls()
                 server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
                 server.send_message(msg)
 
-            flash('Message sent successfully! We\'ll get back to you soon.', 'success')
+            flash('Message sent successfully! We\'ll reach you soon.', 'success')
             logger.info("Contact form submitted by %s <%s>", name, email)
 
         except smtplib.SMTPAuthenticationError:
             flash('Authentication with the email server failed. Please check server credentials.', 'error')
             logger.exception("SMTP authentication failed when handling contact form.")
         except Exception as e:
-            flash('Failed to send message. Please try again later.', 'error')
+            flash('Message sending failed. Please try again later.', 'error')
             logger.exception("Unexpected error while sending contact form email.")
 
         return redirect(url_for('contact'))
