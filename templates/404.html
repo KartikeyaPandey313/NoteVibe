@@ -1,5 +1,5 @@
 <!-- ╔════════════════════════════════════════════════════════════════════════════╗
-     ║ NoteVibe – 404 Error Page                                               ║
+     ║ NoteVibe- Lite – 404 Error Page                                               ║
      ║ Purpose: Custom error page for not found routes.                        ║
      ║ Styling: Minimal, no navbar, no profile icon, no footer.                ║
      ╚════════════════════════════════════════════════════════════════════════════╝ -->
@@ -14,25 +14,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
-    <title>{{ page_title|default('404 Not Found - NoteVibe') }}</title>
-    <meta name="author" content="NoteVibe Team">
+    <title>{{ page_title|default('404 Not Found - NoteVibe- Lite') }}</title>
+    <meta name="author" content="NoteVibe- Lite Team">
     <meta name="owner" content="Kartikeya Pandey">
-    <meta name="description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
+    <meta name="description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe- Lite.') }}">
     <link rel="canonical" href="https://notevibe.com/404.html">
     <meta name="theme-color" content="#08f7fe">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:title" content="{{ page_title|default('404 Not Found - NoteVibe') }}">
-    <meta property="og:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
+    <meta property="og:title" content="{{ page_title|default('404 Not Found - NoteVibe- Lite') }}">
+    <meta property="og:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe- Lite.') }}">
     <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.url }}">
-    <meta property="twitter:title" content="{{ page_title|default('404 Not Found - NoteVibe') }}">
-    <meta property="twitter:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
+    <meta property="twitter:title" content="{{ page_title|default('404 Not Found - NoteVibe- Lite') }}">
+    <meta property="twitter:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe- Lite.') }}">
     <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
     <!-- Favicon -->

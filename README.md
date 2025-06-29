@@ -1,4 +1,4 @@
-# 🎵 **NoteVibe** – _Where Coders Catch the Vibe_
+# 🎵 **NoteVibe- Lite** – _Where Coders Catch the Vibe_
 
 <div align="center">
 
@@ -77,7 +77,7 @@
 <summary>Click to expand</summary>
 
 ```text
-NoteVibe/
+NoteVibe- Lite/
 │
 ├── app.py                # 237 LOC – Main Flask factory & 15+ routes
 ├── extensions.py         #  13 LOC – SQLAlchemy, Migrate, LoginManager singletons

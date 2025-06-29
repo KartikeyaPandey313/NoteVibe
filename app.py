@@ -1,8 +1,8 @@
 """
 ╔════════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe - Main Flask Application                                        ║
-║ Purpose: Application factory, route registration, and global config.     ║
-║ Author: NoteVibe Team                                                    ║
+║ NoteVibe- Lite - Main Flask Application                                   ║
+║ Purpose: Application factory, route registration, and global config.      ║
+║ Author: NoteVibe- Lite Team                                               ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 """
 
