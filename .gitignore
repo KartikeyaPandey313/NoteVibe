@@ -18,3 +18,13 @@ venv/
 # Mac / Windows OS files
 .DS_Store
 Thumbs.db
+
+# Ignore database files
+*.sqlite3
+
+# Ignore instance folder
+instance/
+
+# Ignore system files
+.DS_Store
+Thumbs.db

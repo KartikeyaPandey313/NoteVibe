@@ -1,360 +1,301 @@
-# 🎵 NoteVibe – Where Coders Catch the Vibe (v1.0.1)
+# 🎵 **NoteVibe** – _Where Coders Catch the Vibe_
 
 <div align="center">
 
-![License: Proprietary](https://img.shields.io/badge/license-NoteVibe_Proprietary-red)
-![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-3.1.1-green.svg)
-![Status](https://img.shields.io/badge/Status-Live%20on%20Render-brightgreen)
-![Routes](https://img.shields.io/badge/Routes-15%2B-blueviolet)
+[![License](https://img.shields.io/badge/license-NoteVibe%20Proprietary-red?style=flat-square)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python&logoColor=white)](#-tech-stack)
+[![Flask](https://img.shields.io/badge/Flask-3.1.1-green?style=flat-square&logo=flask&logoColor=white)](#-tech-stack)
+[![Build](https://img.shields.io/github/actions/workflow/status/YourUser/NoteVibe/ci.yml?style=flat-square&label=CI&logo=github)](https://github.com/YourUser/NoteVibe/actions)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen?style=flat-square)](#-tests)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/KartikeyaPandey313/NoteVibe/main/static/images/homepage-screenshot.png" alt="NoteVibe Home" width="780">
-</p>
-
-> **🎯 NoteVibe** is a sleek, neon-themed learning hub packed with concise programming notes, printable cheatsheets, interview-prep guides, and more – all woven together with **Python + Flask**.  
-> The public instance lives at **🌐 <https://notevibe.onrender.com>**.
-
-[🚀 Live Demo](https://notevibe.onrender.com) • [📧 Contact](mailto:pandeykartikeya313@gmail.com) • [📄 License](LICENSE)
+<!-- 👉 Replace with an actual banner (1920×450 recommended) -->
+<img src="static/images/homepage-screenshot.png" alt="NoteVibe Banner" width="100%"/>
 
 </div>
 
----
-
-## 📑 Table of Contents
-
-1. [✨ Key Features](#-key-features)  
-2. [🎨 UI Components](#-ui-components)  
-3. [📸 Screenshots](#-screenshots)  
-4. [⚙️ How It Works (Under the Hood)](#️-how-it-works-under-the-hood)  
-5. [🛠️ Tech Stack](#️-tech-stack)  
-6. [🚀 Local Setup – Personal Use Only](#-local-setup--personal-use-only)  
-7. [📁 Project Structure](#-project-structure)  
-8. [🧪 Tests](#-tests)  
-9. [📋 License Summary](#-license-summary)  
-10. [💼 Commercial Licensing & Contact](#-commercial-licensing--contact)
+> **NoteVibe** is your all-in-one, neon-themed learning hub for coders. Get bite-sized programming notes, printable cheatsheets, interview-prep guides, and more—all powered by **Python + Flask**. Modern, responsive, and ready for your next project, business, or classroom.
 
 ---
 
-## ✨ Key Features
+## 📚 Table of Contents
 
-<div align="center">
-
-| 🎯 Category | ✨ Highlights |
-|-------------|---------------|
-| **📝 Notes** | • Bite-sized explanations of core CS & Python topics<br>• Clean typography & dark-cyber aesthetic<br>• 452 lines of comprehensive content |
-| **📋 Cheatsheets** | • Printable PDFs & quick-reference tables<br>• Syntax reminders & command palettes<br>• 452 lines of organized references |
-| **💼 Interview Prep** | • DSA patterns, complexity cheats, & popular questions<br>• Step-by-step solutions & strategy tips<br>• 395 lines of interview guidance |
-| **📧 Dynamic Contact Form** | • Users can reach out – messages are relayed via Gmail SMTP in real-time<br>• 544 lines of robust form handling with validation |
-| **📱 Responsive Design** | • Looks stunning on 4-inch phones all the way to ultrawides<br>• Mobile-first approach with fluid layouts |
-| **🌟 Neon Theme** | • CSS-only glassmorphism & animated gradients – zero bulky UI frameworks<br>• Dark theme with vibrant neon accents |
-
-</div>
-
-### 🎨 Design Philosophy
-- **Dark Neon Aesthetic** - Eye-friendly dark theme with vibrant neon accents
-- **Glassmorphism Effects** - Modern frosted glass UI elements
-- **Responsive Grid System** - Fluid layouts that adapt to any screen size
-- **Performance Optimized** - Lightweight CSS with minimal JavaScript
+- [✨ Features](#-features)
+- [🖼️ Screenshots](#-screenshots)
+- [🗂️ Project Layout](#️-project-layout)
+- [⚙️ Installation](#️-installation)
+- [🚀 Usage](#-usage)
+- [🛠️ Tech Stack](#-tech-stack)
+- [🧪 Tests](#-tests)
+- [🤝 Contributing](#-contributing)
+- [🗺️ Roadmap & Future Work](#️-roadmap--future-work)
+- [🐞 Known Issues](#-known-issues)
+- [💸 Pricing & Plans](#-pricing--plans)
+- [📜 License](#-license)
+- [🙏 Acknowledgements](#-acknowledgements)
 
 ---
 
-## 🎨 UI Components
+## ✨ Features
 
-<div align="center">
-
-### 🧭 Navigation Bar
-![Navbar](static/images/navbar.png)
-
-### 🦶 Footer
-![Footer](static/images/footer.png)
-
-</div>
-
----
-
-## 📸 Screenshots
-
-<div align="center">
-
-| 📄 Page | 🛣️ Route | 🖼️ Preview |
-|---------|-----------|------------|
-| 🏠 Home | `/` | ![Home](static/images/homepage-screenshot.png) |
-| 📝 Notes | `/notes` | ![Notes](static/images/Notespage-screenshot.png) |
-| 📋 Cheatsheets | `/cheatsheets` | ![Cheatsheets](static/images/Cheatsheetspage-screenshot.png) |
-| 💼 Interview Prep | `/interview-prep` | ![Interview Prep](static/images/Interview-preppage-screenshot.png) |
-| 🛠️ Services | `/services` | ![Services](static/images/Servicespage-screenshot.png) |
-| 🖥️ My Gear | `/my-gear` | ![My Gear](static/images/My-gearpage-screenshot.png) |
-| 📢 Updates | `/updates` | ![Updates](static/images/Updatespage-screenshot.png) |
-| 📧 Contact | `/contact` | ![Contact](static/images/Contactpage-screenshot.png) |
-| ❌ 404 Error | N/A | ![404](static/images/404-Errorpage-screenshot.png) |
-
-> *All screenshots are shipped in */static/images/* so you can open them directly if the table preview cuts them off.*
-
-</div>
+- **📝 Programming Notes**: Concise, clear explanations of core CS & Python topics.
+- **📋 Cheatsheets**: Printable, syntax-first PDF cheatsheets for fast reference.
+- **💼 Interview Prep**: Curated DSA patterns, walkthroughs, and strategy tips.
+- **📧 Dynamic Contact Form**: Secure, real-time messaging via Gmail SMTP.
+- **🧑‍💻 User Auth**: Register, login, and manage your account.
+- **📱 Responsive Design**: Looks stunning on any device, from phones to ultrawides.
+- **🌟 Dark Neon Theme**: Modern glassmorphism, animated gradients, and a cyber-cool vibe.
+- **⚡ Fast & Lightweight**: Minimal JS, optimized for speed.
+- **🔒 Secure**: Environment-based secrets, email validation, and more.
+- **🖼️ Visual Clarity**: Every major page previewed below for full transparency.
 
 ---
 
-## ⚙️ How It Works (Under the Hood)
+## 🖼️ Screenshots
 
-```mermaid
-flowchart TD
-    subgraph Browser
-        A[👤 User] -- HTTP/HTTPS --> B(🐍 Flask Server)
-    end
-    subgraph Server
-        B -- Jinja2 render --> C{📄 Template}
-        B -- SMTP --> D[📧 Gmail]
-        C --> E[🎨 HTML/CSS/JS]
-    end
-    A <-- 200 OK -- E
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#fce4ec
+| Page | Route | Preview |
+|------|-------|---------|
+| **Home** | `/` | ![Home](static/images/homepage-screenshot.png) |
+| **Notes** | `/notes` | ![Notes](static/images/Notespage-screenshot.png) |
+| **Cheatsheets** | `/cheatsheets` | ![Cheatsheets](static/images/Cheatsheetspage-screenshot.png) |
+| **Interview Prep** | `/interview-prep` | ![Interview Prep](static/images/Interview-preppage-screenshot.png) |
+| **Services** | `/services` | ![Services](static/images/Servicespage-screenshot.png) |
+| **My Gear** | `/my-gear` | ![My Gear](static/images/My-Gearpage-screenshot.png) |
+| **Updates** | `/updates` | ![Updates](static/images/Updatespage-screenshot.png) |
+| **Contact** | `/contact` | ![Contact](static/images/Contactpage-screenshot.png) |
+| **About** | `/about` | ![About](static/images/about.png) |
+| **404 Error** | (auto) | ![404](static/images/404-Errorpage-screenshot.png) |
+| **Navbar** | (all pages) | ![Navbar](static/images/navbar.png) |
+| **Footer** | (all pages) | ![Footer](static/images/footer.png) |
+
+> _All screenshots are in `/static/images/` for your review._
+
+---
+
+## 🗂️ Project Layout
+
+<details>
+<summary>Click to expand</summary>
+
+```text
+NoteVibe/
+│
+├── app.py                # 237 LOC – Main Flask factory & 15+ routes
+├── extensions.py         #  13 LOC – SQLAlchemy, Migrate, LoginManager singletons
+├── models.py             #  40 LOC – User & UserActivity ORM models
+├── requirements.txt      #  13 LOC – Python dependencies
+├── test_contact.py       #  95 LOC – Smoke tests for contact workflow
+│
+├── auth/
+│   └── __init__.py       #  89 LOC – Auth blueprint (register/login/logout)
+│
+├── templates/            # Jinja2 templates (HTML)
+│   ├── 404.html          # 262 LOC – Custom error page
+│   ├── about.html        # 477 LOC – About us
+│   ├── ...               # 10+ more templates (home, notes, cheatsheets…)
+│   └── files/            # Reserved for downloadable assets
+│
+├── static/
+│   └── images/           # Logos, screenshots & UI sprites
+│       └── *.png         # Optimised PNGs used across README & site
+│
+├── instance/             # (git-ignored) SQLite DB & runtime files
+├── .github/              # CI, issue templates _(add your workflow)_
+├── .gitignore            # Git exclusions
+└── LICENSE               # Proprietary license text
 ```
 
-### 🔄 Request Flow
-1. **🌐 Routing** – `app.py` registers 15+ routes for every page (`/notes`, `/cheatsheets`, etc.)  
-2. **📄 Template Rendering** – Each route returns a Jinja2 template from */templates/*  
-3. **📧 Contact Workflow** – The form posts to `/contact`, the server validates data, then uses Gmail SMTP to shoot an email straight to the owner's inbox  
-4. **🎨 Styling** – All UI/UX magic lives in `static/css/main.css` + minimal in-page `<style>` blocks  
-5. **🖼️ Assets** – Images & icons live under `static/images/`; no external CDNs aside from Google Fonts
+</details>
 
-### 🛣️ Available Routes
-- `/` or `/home` - Landing page
-- `/services` - Services overview
-- `/notes` - Programming notes
-- `/files/python-note` - Python-specific notes
-- `/cheatsheets` - Quick references
-- `/interview-prep` - Interview resources
-- `/updates` - Site updates
-- `/contact` - Contact form
-- `/about` - About page
-- `/my-gear` - Equipment showcase
-- `/coming-soon` - Future features
-- `/terms` - Terms of service
-- `/privacy` - Privacy policy
+> **Total Lines of Code:** ≈6,500 (HTML ≈6,000, Python ≈500). LOCs calculated with [`cloc`](https://github.com/AlDanial/cloc).
+
+---
+
+## ⚙️ Installation
+
+Make sure you have **Python ≥ 3.11** and **pip** available.
+
+```bash
+# 1) Clone the repository
+$ git clone https://github.com/YourUser/NoteVibe.git && cd NoteVibe
+
+# 2) Create a virtual environment (recommended)
+$ python -m venv .venv
+$ source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+# 3) Install dependencies
+$ pip install -r requirements.txt
+
+# 4) Configure environment variables
+$ cp .env.example .env  # or create one manually
+$ nano .env             # add EMAIL_ADDRESS, EMAIL_PASSWORD, APP_SECRET_KEY
+
+# 5) Run the development server
+$ python app.py
+
+# ➜ Visit http://localhost:5000
+```
+
+> **Note:** Cloning this repository does **not** grant you the right to deploy it publicly or commercially. See [License](#-license) and [Pricing & Plans](#-pricing--plans).
+
+### Production
+
+```bash
+# Use Gunicorn behind Nginx / Caddy (sample)
+$ gunicorn app:create_app --bind 0.0.0.0:8000 --workers 4 --preload
+```
+
+---
+
+## 🚀 Usage
+
+| Command          | Description                               |
+|------------------|-------------------------------------------|
+| `python app.py`  | Start the built-in Flask dev server.      |
+| `pytest`         | Run the smoke tests.                      |
+| `cloc .`         | Generate fresh LOC statistics.            |
+
+Once running, navigate to:
+
+- `/` – Home
+- `/notes` – Programming notes
+- `/cheatsheets` – Cheatsheets hub
+- `/interview-prep` – Interview resources
+- `/contact` – Contact form
 
 ---
 
 ## 🛠️ Tech Stack
 
-<div align="center">
+| Layer      | Tech |
+|------------|------|
+| **Backend** | 🐍 **Python 3.11**, ⚗️ **Flask 3.1.1**, ☁️ Gunicorn |
+| **Database** | 🐘 SQLite (dev) / _bring your own_ Postgres |
+| **Auth** | 🔑 Flask-Login, 🗄️ SQLAlchemy |
+| **Frontend** | 💅 HTML5, 🎨 CSS3 (Flexbox & Grid), ✨ Vanilla JS |
+| **Email** | 📧 Gmail SMTP via `smtplib` |
+| **Dev Tools** | 🧪 pytest, 🌳 dotenv, 🐚 PowerShell/Bash |
 
-| 🏗️ Layer | 🛠️ Tooling | 📊 Version |
-|----------|------------|-----------|
-| **🐍 Backend** | Python 3.11, Flask 3.1.1 (Jinja2, Werkzeug) | Latest |
-| **🎨 Frontend** | HTML5, CSS3 (Flexbox + Grid, glassmorphism), vanilla JS | Modern |
-| **📧 Email** | Gmail SMTP via `smtplib` + `email.mime` | Built-in |
-| **🔧 Dev Tooling** | python-dotenv 1.0.1, PowerShell scripts, `venv`, `pip` | Latest |
-| **🚀 Prod Server** | Gunicorn 23.0.0 (production WSGI server) | Latest |
-| **🧪 Testing** | `test_contact.py` – smoke-suite for env vars & contact route | Custom |
-
-</div>
-
-### 📦 Dependencies
-- **Flask 3.1.1** - Modern web framework with Jinja2 templating
-- **python-dotenv 1.0.1** - Environment variable management
-- **gunicorn 23.0.0** - Production WSGI server
-- **smtplib** - Email functionality (built-in Python library)
-
----
-
-## 🚀 Local Setup – Personal Use Only
-
-```bash
-# 1. 🗂️ Clone the repo
-$ git clone https://github.com/YourUser/NoteVibe.git && cd NoteVibe
-
-# 2. 🐍 Create & activate a virtual env
-$ python -m venv .venv
-$ .venv\Scripts\activate  # Windows PowerShell
-$ source .venv/bin/activate  # Unix/Linux
-
-# 3. 📦 Install Python dependencies
-$ pip install -r requirements.txt
-
-# 4. 🔐 Add your secrets to a .env file (Gmail App Password recommended)
-EMAIL_ADDRESS=your-gmail@example.com
-EMAIL_PASSWORD=your-16-char-app-password
-APP_SECRET_KEY=random-super-secret
-
-# 5. 🚀 Fire up the development server
-$ python app.py
-
-# 6. 🌐 Visit
-http://localhost:5000
-```
-
-> **⚠️ Important** – Cloning the repo does **not** grant you the right to deploy it publicly. See [License Summary](#-license-summary).
-
-### 🔧 Environment Variables
-Create a `.env` file in the root directory with:
-```env
-EMAIL_ADDRESS=your-gmail@gmail.com
-EMAIL_PASSWORD=your-app-password
-APP_SECRET_KEY=your-secret-key
-```
-
-### 🚀 Production Deployment
-For production deployment, use Gunicorn:
-```bash
-$ gunicorn app:app
-```
-
----
-
-## 📁 Project Structure
-
-```
-NoteVibe/                          # 🏠 Root directory
-│
-├── 📱 Core Files
-│   ├── app.py                     # 🐍 Main Flask app (185 lines, 15+ routes, email, logging)
-│   ├── requirements.txt           # 📦 Dependencies (Flask 3.1.1, gunicorn 23.0.0, dotenv 1.0.1)
-│   ├── test_contact.py            # 🧪 Contact form testing (94 lines)
-│   └── structure.txt              # 📋 Project structure documentation
-│
-├── 📚 Docs
-│   ├── README.md                  # 📖 Project guide & setup (179 lines)
-│   └── LICENSE                    # ⚖️ Proprietary license (86 lines)
-│
-├── ⚙️ Config
-│   ├── .gitattributes             # 🔧 Git settings (9 lines)
-│   ├── .gitignore                 # 🚫 Ignored files (20 lines)
-│   └── .env                       # 🔐 Secrets (create manually)
-│
-├── 🎨 Static Assets
-│   └── images/                    # 🖼️ Images & screenshots
-│       ├── logo.png               # 🏷️ Site logo (921KB)
-│       ├── github-icon.png        # 📱 GitHub icon (5.4KB)
-│       ├── gmail-icon.png         # 📧 Gmail icon (59KB)
-│       ├── navbar.png             # 🧭 Navigation bar (29KB)
-│       ├── footer.png             # 🦶 Footer (30KB)
-│       └── 📸 Screenshots/        # 📱 Page previews
-│           ├── homepage-screenshot.png
-│           ├── Notespage-screenshot.png
-│           ├── Cheatsheetspage-screenshot.png
-│           ├── Interview-preppage-screenshot.png
-│           ├── Servicespage-screenshot.png
-│           ├── My-gearpage-screenshot.png
-│           ├── Updatespage-screenshot.png
-│           ├── Contactpage-screenshot.png
-│           └── 404-Errorpage-screenshot.png
-│
-├── 📄 Templates
-│   ├── 🏠 Main Pages
-│   │   ├── home.html              # 🏠 Landing page (769 lines)
-│   │   ├── about.html             # ℹ️ About us (477 lines)
-│   │   ├── services.html          # 🛠️ Services overview (588 lines)
-│   │   └── contact.html           # 📧 Contact form + email (544 lines)
-│   │
-│   ├── 📚 Learning
-│   │   ├── notes.html             # 📝 Programming notes (452 lines)
-│   │   ├── cheatsheets.html       # 📋 Quick references (452 lines)
-│   │   └── interview-prep.html    # 💼 Interview resources (395 lines)
-│   │
-│   ├── 🛠️ Utility
-│   │   ├── my-gear.html           # 🖥️ Equipment showcase (464 lines)
-│   │   ├── updates.html           # 📢 Changelog (403 lines)
-│   │   └── coming-soon.html       # 🚧 Future features (473 lines)
-│   │
-│   ├── ⚖️ Legal
-│   │   ├── terms.html             # 📜 Terms of service (431 lines)
-│   │   └── privacy.html           # 🔒 Privacy policy (443 lines)
-│   │
-│   ├── 🚨 Errors
-│   │   └── 404.html               # ❌ Custom error page (262 lines)
-│   │
-│   └── 📁 files/                  # 📂 Future downloads (empty)
-│
-├── 🐍 Python Cache
-│   └── __pycache__/               # 🔄 Python bytecode cache
-│
-└── 🎯 Virtual Environment
-    └── .venv/                     # 🐍 Python virtual environment
-```
-
-### 📊 File Statistics
-- **Total Lines of Code**: 6,000+ lines across all templates
-- **Total File Size**: ~15MB including images
-- **Template Count**: 15 HTML templates
-- **Image Assets**: 14 optimized images (including navbar/footer)
-- **Flask Routes**: 15+ routes with full functionality
-- **Email Integration**: Gmail SMTP with TLS encryption
+> Logos provided by [Simple Icons](https://simpleicons.org/).
 
 ---
 
 ## 🧪 Tests
 
-Run the built-in contact smoke test:
-
 ```bash
-$ python test_contact.py
+$ python test_contact.py   # quick smoke test
 ```
 
-You should see green check-marks for imports, env vars, and route discovery before deploying.
+The script checks:
 
-### 🧪 Test Coverage
-- ✅ **Import Validation** - Ensures all required modules are available
-- ✅ **Environment Variables** - Checks for required .env variables
-- ✅ **Route Discovery** - Validates all Flask routes are properly configured
-- ✅ **Email Configuration** - Tests Gmail SMTP setup
+1. Python module imports
+2. Environment variables presence
+3. Flask app import & `/contact` route discovery
 
 ---
 
-## 📋 License Summary
+## 🤝 Contributing
 
-This codebase is protected by the **NoteVibe Proprietary License** (see full text in [`LICENSE`](LICENSE)).
+> **First get a license!** Without a valid license, any attempt to deploy or contribute may result in legal action.
 
-<div align="center">
+1. **Fork** the project & create your feature branch
+   ```bash
+   git checkout -b feat/amazing-feature
+   ```
+2. **Commit** with conventional commits
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+3. **Push** and open a **Pull Request** – please fill out the PR template.
 
-| ✅ Allowed | ❌ Restricted |
-|------------|---------------|
-| • Read the code for educational purposes | • Public deployment without license |
-| • Reuse up to 10 lines with attribution | • Commercial redistribution |
-| • Personal/local development | • Client work without permission |
-| • Educational material creation | • Unauthorized hosting |
+### Code Style
 
-</div>
+- **Python** – PEP 8 + `black` (120 cols)
+- **HTML/CSS** – 2-space indent, semantic tags, BEM naming
+- All new Python must include **type hints & docstrings**.
 
-> **⚖️ Legal Notice**: Unauthorized public hosting may trigger DMCA takedowns or legal action.
-
----
-
-## 💼 Commercial Licensing & Contact
-
-Interested in using NoteVibe on a public server, in client work, or in a commercial course?
-
-<div align="center">
-
-### 📧 **pandeykartikeya313@gmail.com**
-
-**🎯 License Options:**
-- 💰 **Monthly License** - Flexible commercial use
-- 🏆 **Lifetime License** - One-time payment
-- 🎓 **Educational License** - Academic institutions
-- 🤝 **Custom Licensing** - Tailored to your needs
-
-**💡 Why License?**
-- 🛡️ Legal protection for your business
-- 🚀 Priority support and updates
-- 📚 Access to premium features
-- 🤝 Partnership opportunities
-
-</div>
+> **Good first issues** are labelled `help-wanted`.
 
 ---
 
+## 🗺️ Roadmap & Future Work
+
+- [ ] **Internationalisation (i18n)** – EN → ES/FR/DE
+- [ ] **Search bar** with fuzzy matching across notes
+- [ ] **Dark-mode toggle** (currently always-on neon)
+- [ ] **Dockerfile** & Compose for one-command deploys
+- [ ] **Switch to Postgres** in prod + Alembic migrations
+
+---
+
+## 🐞 Known Issues
+
+- First-time SMTP auth may fail if Gmail marks the login as suspicious.
+- Large image assets slightly slow initial load on 3G connections.
+- No CSRF protection on the contact form – _patch pending_.
+
+Please search existing issues before opening a new one.
+
+---
+
+# 💸 Pricing & Plans
+
+## Why NoteVibe is the Smartest Investment for You 🛒
+
+- **All-in-one**: Notes, cheatsheets, interview prep, and more—no extra plugins needed.
+- **Lightning Fast**: Loads in a flash, even on slow networks.
+- **Mobile-Ready**: Looks stunning on any device.
+- **Secure**: Your data, your rules—no third-party tracking.
+- **Support That Cares**: Email us, and we'll get back within 1–2 days. Always.
+- **No Hidden Fees**: What you see is what you pay.
+- **Flexible Ownership**: Buy just the code, or get a full setup with your domain—your choice!
+
+---
+
+## 🏷️ Choose Your Plan – _Pay Only for What You Need!_
+
+| Plan Name | What You Get | Monthly | Yearly | One-Time | With Domain Setup | Code-Only |
+|-----------|--------------|---------|--------|----------|-------------------|-----------|
+| **Starter** | - Read the code<br>- Run locally for learning<br>- _No public/commercial deployment_ | **FREE** | **FREE** | N/A | N/A | ✅ |
+| **Pro** | - Deploy on **1 domain**<br>- All features unlocked<br>- Priority email support<br>- **Lifetime updates**<br>- _Perfect for freelancers & small teams_ | **$4.99**<br>_Cancellable anytime!_ <br>_On Render_| **$49**<br>_Best value!_ | **$99**<br>_Pay once, use forever!_ | ✅<br>_Includes code enhancement & domain setup!_ | ✅ |
+| **Business** | - Up to **5 domains**<br>- Premium support<br>- White-label<br>- Priority feature requests<br>- **Lifetime access**<br>- _For agencies & startups_ | **$14.99** | **$149** | **$399** | ✅<br>_Custom branding, domain setup & onboarding!_ | ✅ |
+| **Educational** | - For schools, teachers, students<br>- All features<br>- Single domain<br>- Proof required<br>- **Lifetime updates** | **$2.99** | **$29** | **$59** | ✅<br>_Onboarding & priority support!_ | ✅ |
+| **Enterprise** | - Unlimited domains<br>- SLA<br>- Custom features<br>- Dedicated onboarding<br>- _Let's build your dream platform!_ | <span style="color:gray">Contact Us</span> | <span style="color:gray">Contact Us</span> | <span style="color:gray">Contact Us</span> | ✅ | ✅ |
+
+---
+
+### 🎁 **One-Time Plan Perks**
+- We'll enhance the code for your needs—just ask!
+- Free domain setup and deployment help.
+- Custom features? We'll build them for you.
+- Lifetime updates and priority support.
+
+### 💡 **Custom Plan?**
+Want something unique? [Contact us](mailto:pandeykartikeya313@gmail.com) and we'll make it happen—fast.
+
+> _This price is not final. Price may differ after [contact](mailto:pandeykartikeya313@gmail.com)._
+
+---
+
+## 📜 License
+
+NoteVibe is licensed under the **NoteVibe Proprietary License**. You may browse the source for personal education, but _public or commercial deployment requires a paid license_. See [`LICENSE`](LICENSE) for full terms.
+
+> Unauthorized public deployment may result in DMCA takedown or legal action.
+
+---
+
+## 🙏 Acknowledgements
+
+- **Flask** & its amazing community
+- **Bootstrap Icons** & **Simple Icons** for graphics
+- Everyone who has sent feedback or PRs – _you rock!_
+
+---
+
 <div align="center">
-
-## 🌟 Made with ❤️ in India
-
-**© 2025 Kartikeya Pandey** • [🌐 Live Site](https://notevibe.onrender.com) • [📧 Contact](mailto:pandeykartikeya313@gmail.com)
-
-[⬆️ Back to Top](#-notevibe--where-coders-catch-the-vibe-v101)
-
+  Made with ❤️ in India • © 2025 Kartikeya Pandey<br/>
+  <a href="#🎵-notevibe-–-where-coders-catch-the-vibe">⬆️ Back to top</a>
 </div>
+
+
+

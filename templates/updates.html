@@ -1,14 +1,15 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – Updates Page                                                  ║
+     ║ Purpose: Displays changelog and platform news updates.                   ║
+     ║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Updates Page                                                  ║
-║ Purpose: Displays changelog and platform news updates.                   ║
-║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- Meta tags for SEO and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -17,26 +18,40 @@
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
         content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
+
+    <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notevibe.com/updates.html">
     <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://notevibe.com/updates.html">
     <meta property="og:title" content="Latest Updates - NoteVibe">
     <meta property="og:description"
         content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
     <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://notevibe.com/updates.html">
     <meta property="twitter:title" content="Latest Updates - NoteVibe">
     <meta property="twitter:description"
         content="Stay updated with NoteVibe's latest programming resources, new features, and content updates. Never miss out on new learning materials.">
     <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Favicon and Apple Touch Icon -->
     <link rel="icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Stylesheets for fonts and main CSS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
+
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -64,6 +79,7 @@
             min-height: 100vh;
         }
 
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -93,6 +109,7 @@
             }
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -107,6 +124,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -137,6 +155,7 @@
             background: #232d3f;
         }
 
+        /* Updates Section styles */
         .updates-section {
             display: flex;
             flex-direction: column;
@@ -357,7 +376,9 @@
         <div class="updates-card">
             <h1>Updates & Announcements</h1>
             <p>
-                At NoteVibe, we are committed to keeping our content fresh, relevant, and valuable for you. This page is
+                At <span
+                    style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; text-decoration: none; font-size: 1.rem;">NoteVibe</span>,
+                we are committed to keeping our content fresh, relevant, and valuable for you. This page is
                 where
                 you'll find all our latest updates, new notes, cheat sheets, and announcements.<br><br>
                 We regularly add new programming notes, release cheat sheets, and share important news about features

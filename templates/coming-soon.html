@@ -1,42 +1,60 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – Coming Soon Page                                             ║
+     ║ Purpose: Teaser for upcoming features and content.                      ║
+     ║ Styling: Consistent with site theme and navigation logic.               ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Coming Soon Page                                              ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- ╔════════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║ Head: Meta, Fonts, Styles, and Theming                          ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════════╝ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>Coming Soon - NoteVibe</title>
+    <title>Coming Soon – NoteVibe</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
         content="Exciting new features and content are coming soon to NoteVibe. Stay tuned for updates on our latest programming resources and learning materials.">
+
+    <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notevibe.com/coming-soon.html">
     <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://notevibe.com/coming-soon.html">
     <meta property="og:title" content="Coming Soon - NoteVibe">
     <meta property="og:description"
         content="Exciting new features and content are coming soon to NoteVibe. Stay tuned for updates on our latest programming resources and learning materials.">
     <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://notevibe.com/coming-soon.html">
     <meta property="twitter:title" content="Coming Soon - NoteVibe">
     <meta property="twitter:description"
         content="Exciting new features and content are coming soon to NoteVibe. Stay tuned for updates on our latest programming resources and learning materials.">
     <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Favicon and Apple Touch Icon -->
     <link rel="icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets for fonts and main CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..800&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
+
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -66,6 +84,7 @@
             min-height: 100vh;
         }
 
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -95,6 +114,7 @@
             }
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -110,6 +130,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -140,6 +161,7 @@
             background: #232d3f;
         }
 
+        /* Coming Soon Section styles */
         .coming-soon-section {
             display: flex;
             flex-direction: column;
@@ -178,34 +200,6 @@
             color: #e3e3e3;
             margin-bottom: 2rem;
             line-height: 1.7;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .countdown-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            text-shadow: var(--text-glow);
-        }
-
-        .countdown-label {
-            font-size: 0.9rem;
-            color: #e3e3e3;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
         }
 
         .btn {
@@ -365,49 +359,43 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <!-- ╔════════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║ Navbar                                                          ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════════╝ -->
+    <nav class="navbar" aria-label="Main Navigation">
         <a href="{{ url_for('home') }}" class="logo">NoteVibe™</a>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li class="dropdown">
-                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('notes') }}">Notes</a>
             <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
-    <section class="coming-soon-section">
-        <div class="coming-soon-card">
-            <div class="construction-icon">🚧</div>
-            <h1>Coming Soon</h1>
-            <p>We're working hard to bring you something amazing. This page is currently under construction and will be
-                available soon.</p>
 
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-value" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
+    <!-- ╔════════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║ Coming Soon Content                                             ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════════╝ -->
+    <main>
+        <section class="coming-soon-section">
+            <div class="coming-soon-card">
+                <div class="construction-icon">🚧</div>
+                <h1
+                    style="font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 3rem; color: var(--accent-color); text-decoration: none;">
+                    Coming Soon</h1>
+                <p style="font-family: 'Roboto', Arial, sans-serif; font-size: 1.2rem; color: var(--nav-link-color); text-decoration: none;">
+                    Big things are brewing behind the scenes at <span
+                        style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 1.2rem; text-decoration: none; font-weight: bold;">NoteVibe</span>. This page is under construction, but trust us
+                    — it’ll be worth the wait.</p>
+                <p style="font-family: 'Roboto', Arial, sans-serif; font-size: 1.2rem; color: var(--nav-link-color); text-decoration: none;">
+                    Stay tuned. We're crafting something epic just for you. 🚀</p>
+
             </div>
+        </section>
+    </main>
 
-            <!-- <p>Want to be notified when we launch?</p>
-            <a href="contact.html" class="btn">Notify Me</a> -->
-        </div>
-    </section>
+    <!-- ╔════════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║ Footer                                                          ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════════╝ -->
     <footer class="footer-card">
         <div class="footer-content">
             <div>
@@ -420,7 +408,7 @@
                 <h3>Learn</h3>
                 <a href="{{ url_for('notes') }}">Notes</a>
                 <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
-                <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
+                <a href="{{ url_for('interview_prep') }}">Interview Prep.</a>
             </div>
             <div>
                 <h3>Legal</h3>
@@ -429,45 +417,21 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub"
+                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank"
+                    aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube"
+                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
-        <p>Made with ❤️ in India | © 2025 NoteVibe. All rights reserved.</p>
+        <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Set the launch date (2 month from now)
-        const launchDate = new Date();
-        launchDate.setMonth(launchDate.getMonth() + 2);
-
-        // Update countdown every second
-        const countdown = setInterval(function () {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            // Calculate days, hours, minutes, seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-
-            // If the countdown is finished
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("days").innerHTML = "00";
-                document.getElementById("hours").innerHTML = "00";
-                document.getElementById("minutes").innerHTML = "00";
-                document.getElementById("seconds").innerHTML = "00";
-            }
-        }, 1000);
-    </script>
 </body>
 
 </html>

@@ -1,45 +1,54 @@
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Notes Page                                                    ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- Meta tags for SEO and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>Programming Notes - NoteVibe</title>
+    <title>{{ page_title|default('NoteVibe - Programming Notes') }}</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
-        content="Access comprehensive programming notes covering Python, Flask, web development, and more. Learn with our detailed, practical, and up-to-date resources.">
+        content="{{ page_description|default('Comprehensive programming notes covering Python, Java, C++, and more. Perfect for learning and reference.') }}">
+
+    <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notevibe.com/notes.html">
     <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://notevibe.com/notes.html">
-    <meta property="og:title" content="Programming Notes - NoteVibe">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{{ page_title|default('NoteVibe - Programming Notes') }}">
     <meta property="og:description"
-        content="Access comprehensive programming notes covering Python, Flask, web development, and more. Learn with our detailed, practical, and up-to-date resources.">
-    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+        content="{{ page_description|default('Comprehensive programming notes covering Python, Java, C++, and more. Perfect for learning and reference.') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://notevibe.com/notes.html">
-    <meta property="twitter:title" content="Programming Notes - NoteVibe">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{{ page_title|default('NoteVibe - Programming Notes') }}">
     <meta property="twitter:description"
-        content="Access comprehensive programming notes covering Python, Flask, web development, and more. Learn with our detailed, practical, and up-to-date resources.">
-    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
-    <link rel="icon" href="/static/images/favicon.ico">
+        content="{{ page_description|default('Comprehensive programming notes covering Python, Java, C++, and more. Perfect for learning and reference.') }}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Stylesheets for fonts and main CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
+
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -52,7 +61,8 @@
             --glass-bg: rgba(30, 39, 60, 0.92);
             --glass-blur: blur(7px);
             --btn-glow: 0 0 18px #08f7fe99, 0 0 4px #09fbd366;
-            --hero-overlay: rgba(0, 0, 0, 0.5);
+            --hero-overlay: linear-gradient(120deg, #10131aee 60%, #08f7fe11 100%);
+            --text-glow: 0 0 6px #08f7fe99;
         }
 
         * {
@@ -68,6 +78,7 @@
             min-height: 100vh;
         }
 
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -97,6 +108,7 @@
             }
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -112,6 +124,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -138,35 +151,110 @@
 
         .navbar ul li a.active,
         .navbar ul li a:hover {
-            color: var(--accent-color);
-            background: #232d3f;
+            background: var(--accent-color);
+            color: var(--primary-color);
         }
 
+        /* Dropdown styles */
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
+        /* Notes Section styles */
         .notes-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: calc(100vh - var(--navbar-height));
-            padding: 70px 15px 0 15px;
+            padding: 4rem 2rem;
             background: linear-gradient(120deg, #10131a 60%, #08f7fe11 100%);
         }
 
-        .notes-card {
-            background: var(--card-bg);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            padding: 2.5rem 2.2rem 2.2rem 2.2rem;
-            max-width: 900px;
-            margin-top: 2rem;
-            border: 1.5px solid #09fbd333;
-            text-align: left;
-            width: 100%;
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .notes-card h1 {
+        .note-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(31, 38, 135, 0.37);
+            padding: 2.5rem;
+            border: 2px solid #09fbd3;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(8, 247, 254, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .note-card:hover::before {
+            left: 100%;
+        }
+
+        .note-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(8, 247, 254, 0.2);
+        }
+
+        .note-card h1 {
             font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
-            font-size: 2.1rem;
+            font-size: 2.8rem;
             color: var(--accent-color);
             margin-bottom: 1.2rem;
             letter-spacing: 2px;
@@ -174,124 +262,74 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            text-shadow: 0 0 12px #08f7fe55;
             filter: drop-shadow(0 2px 8px #08f7fe28);
-            text-align: center;
         }
 
-        .notes-list {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.1rem;
-        }
-
-        .notes-list a {
-            display: block;
-            background: #18202a;
-            border-radius: 10px;
-            padding: 1.15rem 1.3rem;
+        .note-card p {
             color: #e3e3e3;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.13rem;
-            transition: background 0.18s, color 0.18s, border 0.18s;
-            border: 1.3px solid #09fbd322;
-            box-shadow: 0 2px 10px #08f7fe10;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
-        .notes-list a:hover {
-            background: #232d3f;
-            color: var(--accent-color);
-            border: 1.3px solid #09fbd3;
+        .note-features {
+            list-style: none;
+            margin: 1.5rem 0;
         }
 
-        @media (max-width: 900px) {
-            .notes-card {
-                padding: 1.5rem 0.7rem;
-            }
-
-            .notes-card h1 {
-                font-size: 1.5rem;
-            }
-
-            .navbar .logo {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .navbar {
-                flex-direction: column;
-                height: auto;
-                padding: 1rem;
-                gap: 0.8rem;
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                gap: 0.7rem;
-            }
-
-            .notes-section {
-                padding-top: 30px;
-            }
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: calc(100vh - var(--navbar-height));
-            text-align: center;
-            background: var(--hero-overlay), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        .note-features li {
+            color: #e3e3e3;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
             position: relative;
-            animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                filter: blur(6px);
-            }
-
-            80% {
-                opacity: 0.7;
-                filter: blur(1.5px);
-            }
-
-            100% {
-                opacity: 1;
-                filter: blur(0);
-            }
+        .note-features li::before {
+            content: '→';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
-        .hero-content {
-            background: var(--card-bg);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-            padding: 3.3rem 2.2rem 2.5rem 2.2rem;
-            max-width: 620px;
-            margin-top: 2rem;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1.5px solid #09fbd333;
-            animation: contentDrop 0.8s cubic-bezier(.5, -0.2, .5, 1.4);
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
 
-        @keyframes contentDrop {
-            0% {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .tech-badge {
+            background: var(--accent-gradient);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
 
-        /* Footer styles */
+        .note-btn {
+            background: var(--accent-gradient);
+            color: var(--primary-color);
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: var(--btn-glow);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .note-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 25px #08f7feaa, 0 0 8px #09fbd377;
+        }
+
         .footer-card {
             background-color: var(--secondary-color);
             color: var(--nav-link-color);
@@ -301,6 +339,7 @@
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 0;
+            margin-top: 3rem;
         }
 
         .footer-content {
@@ -335,56 +374,76 @@
             opacity: 0.8;
         }
 
-        /* Dropdown styles */
-        li a,
-        .dropbtn {
-            display: inline-block;
-            text-align: center;
-            padding: 12px 16px;
-            text-decoration: none;
+        .account-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(16,19,26,0.75);
+            z-index: 2000;
+            align-items: flex-start;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .account-modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+        .account-modal.slide-in {
+            transform: translateX(100vw);
+            transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+        }
+        .account-modal-overlay.active .account-modal.slide-in {
+            transform: translateX(0);
+        }
+        .close-btn {
+            color: #888;
+            background: none;
+            border: none;
+            outline: none;
+            z-index: 10;
+            transition: color 0.2s;
+        }
+        .close-btn:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .notes-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            .note-card {
+                padding: 2rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
         }
 
-        li a:hover {
-            border-radius: 16px;
-        }
-
-        li.dropdown {
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: block;
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            background-color: var(--secondary-color);
-            border-radius: 12px;
-            transform: translateY(10px);
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            color: var(--nav-link-color);
-        }
-
-        .dropdown-content a:hover {
-            background-color: var(--accent-color);
-            color: #10131a;
-            border-radius: 8px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+            .navbar .logo {
+                font-size: 1.8rem;
+            }
+            .hero-content {
+                padding: 2rem 1.5rem;
+                margin-top: 1rem;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            .notes-section {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
@@ -394,32 +453,110 @@
         <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-
             <!-- Dropdown for Services -->
             <li class="dropdown">
                 <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
                 <div class="dropdown-content">
-                    <a href="{{ url_for('notes') }}" class="active" aria-current="page">Notes</a>
+                    <a href="{{ url_for('notes') }}">Notes</a>
                     <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
                     <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
                 </div>
             </li>
-
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
-    <section class="notes-section">
-        <div class="notes-card">
-            <h1>Programming Notes</h1>
-            <div class="notes-list">
-                <!-- Example file links, replace/hook with your uploaded files -->
-                <!-- <a href="files/notes.pdf" target="_blank">Notes</a> -->
-                <h1><br>Coming soon...</h1>
-                <!-- Add more notes here as needed -->
+
+    <main>
+        <section class="notes-section">
+            <div class="notes-grid">
+                <div class="note-card">
+                    <h1 style="text-align: center;">Python Notes</h1>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python Basics</span>
+                        <span class="tech-badge">OOP</span>
+                        <span class="tech-badge">Data Structures</span>
+                        <span class="tech-badge">Advanced</span>
+                    </div>
+
+                    <ul class="note-features">
+                        <li>Core Python syntax and concepts</li>
+                        <li>Object-oriented programming principles</li>
+                        <li>Data structures and algorithms</li>
+                        <li>File handling and I/O operations</li>
+                        <li>Error handling and debugging</li>
+                        <li>Best practices and PEP guidelines</li>
+                    </ul>
+
+                    <a href="#" class="note-btn">Coming Soon</a>
+                </div>
+
+                <div class="note-card">
+                    <h1 style="text-align: center;">Java Notes</h1>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Java Basics</span>
+                        <span class="tech-badge">OOP</span>
+                        <span class="tech-badge">Collections</span>
+                        <span class="tech-badge">Advanced</span>
+                    </div>
+
+                    <ul class="note-features">
+                        <li>Java fundamentals and syntax</li>
+                        <li>Object-oriented programming</li>
+                        <li>Collections framework</li>
+                        <li>Exception handling</li>
+                        <li>Multithreading concepts</li>
+                        <li>Java 8+ features</li>
+                    </ul>
+
+                    <a href="#" class="note-btn">Coming Soon</a>
+                </div>
+
+                <div class="note-card">
+                    <h1 style="text-align: center;">C++ <br>Notes</h1>
+                    <div class="tech-stack">
+                        <span class="tech-badge">C++ Basics</span>
+                        <span class="tech-badge">OOP</span>
+                        <span class="tech-badge">STL</span>
+                        <span class="tech-badge">Modern C++</span>
+                    </div>
+
+                    <ul class="note-features">
+                        <li>C++ fundamentals and syntax</li>
+                        <li>Object-oriented programming</li>
+                        <li>Standard Template Library (STL)</li>
+                        <li>Memory management</li>
+                        <li>Templates and generics</li>
+                        <li>Modern C++ features (C++11+)</li>
+                    </ul>
+
+                    <a href="#" class="note-btn">Coming Soon</a>
+                </div>
+
+                <div class="note-card">
+                    <h1 style="text-align: center;">JavaScript Notes</h1>
+                    <div class="tech-stack">
+                        <span class="tech-badge">JS Basics</span>
+                        <span class="tech-badge">ES6+</span>
+                        <span class="tech-badge">DOM</span>
+                        <span class="tech-badge">Async</span>
+                    </div>
+
+                    <ul class="note-features">
+                        <li>JavaScript fundamentals</li>
+                        <li>ES6+ features and syntax</li>
+                        <li>DOM manipulation</li>
+                        <li>Asynchronous programming</li>
+                        <li>Event handling</li>
+                        <li>Modern JavaScript patterns</li>
+                    </ul>
+
+                    <a href="#" class="note-btn">Coming Soon</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
     <footer class="footer-card">
         <div class="footer-content">
             <div>
@@ -441,8 +578,14 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank" aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
         <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>

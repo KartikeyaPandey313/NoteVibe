@@ -1,14 +1,15 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – My Gear Page                                                  ║
+     ║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+     ║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – My Gear Page                                                  ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- Meta tags for SEO and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -17,26 +18,40 @@
     <meta name="owner" content="Kartikeya Pandey">
     <meta name="description"
         content="Explore the tools, software, and hardware used by NoteVibe for development. Learn about our recommended development setup and productivity tools.">
+
+    <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notevibe.com/my-gear.html">
     <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://notevibe.com/my-gear.html">
     <meta property="og:title" content="My Development Setup - NoteVibe">
     <meta property="og:description"
         content="Explore the tools, software, and hardware used by NoteVibe for development. Learn about our recommended development setup and productivity tools.">
     <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://notevibe.com/my-gear.html">
     <meta property="twitter:title" content="My Development Setup - NoteVibe">
     <meta property="twitter:description"
         content="Explore the tools, software, and hardware used by NoteVibe for development. Learn about our recommended development setup and productivity tools.">
     <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+
+    <!-- Favicon and Apple Touch Icon -->
     <link rel="icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Stylesheets for fonts and main CSS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
+
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -66,6 +81,7 @@
             min-height: 100vh;
         }
 
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -95,6 +111,7 @@
             }
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -110,6 +127,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -140,6 +158,7 @@
             background: #232d3f;
         }
 
+        /* Gear Section styles */
         .gear-section {
             display: flex;
             flex-direction: column;
@@ -165,6 +184,8 @@
         .gear-card h1 {
             font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
             font-size: 2.3rem;
+            text-decoration: none;
+            font-weight: bold;
             color: var(--accent-color);
             margin-bottom: 1.2rem;
             letter-spacing: 2px;
@@ -207,6 +228,11 @@
             font-size: 1.3rem;
             color: var(--accent-color);
             margin-bottom: 0.8rem;
+            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--accent-color);
+            filter: drop-shadow(0 2px 8px #08f7fe28);
         }
 
         .gear-item p {
@@ -353,14 +379,7 @@
         <a href="{{ url_for('home') }}" class="logo">NoteVibe™</a>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li class="dropdown">
-                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('notes') }}">Notes</a>
-                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
-                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
-                </div>
-            </li>
+            <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
@@ -405,7 +424,7 @@
                         <h3>Web Technologies</h3>
                         <p><strong>Frontend:</strong> HTML5, CSS3</p>
                         <p><strong>Backend:</strong> Python, Flask</p>
-                        <p><strong>Hosting:</strong> Render, Vercel</p>
+                        <p><strong>Hosting:</strong> Render</p>
                         <p><strong>Analytics:</strong> Google Analytics</p>
                     </div>
                 </div>
@@ -453,8 +472,14 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank" aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
         <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>

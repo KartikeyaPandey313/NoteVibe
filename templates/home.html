@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Home Page                                                     ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- Meta tags for SEO and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>NoteVibe - Home</title>
+    <title>{{ page_title|default('NoteVibe - Home') }}</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
-    <meta name="description"
-        content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning. Upgrade your coding game with concise, updated notes and a passionate community.">
+    <meta name="description" content="{{ page_description|default('NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.') }}">
 
     <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notevibe.com/home.html">
@@ -24,25 +18,23 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://notevibe.com/home.html">
-    <meta property="og:title" content="NoteVibe - Home">
-    <meta property="og:description"
-        content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.">
-    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{{ page_title|default('NoteVibe - Home') }}">
+    <meta property="og:description" content="{{ page_description|default('NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://notevibe.com/home.html">
-    <meta property="twitter:title" content="NoteVibe - Home">
-    <meta property="twitter:description"
-        content="NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.">
-    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{{ page_title|default('NoteVibe - Home') }}">
+    <meta property="twitter:description" content="{{ page_description|default('NoteVibe is your destination for curated programming notes, cheat sheets, and coding resources to supercharge your learning.') }}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
-    <!-- Favicon -->
-    <link rel="icon" href="/static/images/favicon.ico">
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
 
-    <!-- Stylesheets -->
+    <!-- Stylesheets for fonts and main CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
@@ -52,6 +44,8 @@
 
     <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
+
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -76,11 +70,12 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            background: #10131a;
+            background: var(--primary-color);
             color: #e3e3e3;
             min-height: 100vh;
         }
 
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -110,6 +105,7 @@
             }
         }
 
+        /* Dropdown styles */
         li a,
         .dropbtn {
             display: inline-block;
@@ -161,6 +157,7 @@
             border-radius: 8px;
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -176,6 +173,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -202,8 +200,8 @@
 
         .navbar ul li a.active,
         .navbar ul li a:hover {
-            color: var(--accent-color);
-            background: #232d3f;
+            background: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .hero {
@@ -431,6 +429,7 @@
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin: 0;
+            margin-top: 3rem;
         }
 
         .footer-content {
@@ -557,9 +556,7 @@
     <nav class="navbar" aria-label="Main Navigation">
         <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
-            <li><a href="{{ url_for('home') }}" class="active" aria-current="page">Home</a></li>
-
-            <!-- Dropdown for Services -->
+            <li><a href="{{ url_for('home') }}">Home</a></li>
             <li class="dropdown">
                 <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
                 <div class="dropdown-content">
@@ -568,7 +565,6 @@
                     <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
                 </div>
             </li>
-
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
@@ -602,19 +598,18 @@
                 <div class="feature-grid">
                     <div class="feature-item">
                         <h3>📚 Programming Notes</h3>
-                        <p>Our current collection includes detailed notes on:</p>
+                        <p>Comprehensive, concise, and regularly-updated notes for all major programming languages including Python, Java, C++, and more.</p>
                         <div class="tech-stack">
-                            <span class="tech-badge">Python Basics</span>
-                            <span class="tech-badge">Python OOP</span>
-                            <span class="tech-badge">Flask Framework</span>
-                            <span class="tech-badge">Web Development</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Java</span>
+                            <span class="tech-badge">C++</span>
+                            <span class="tech-badge">JavaScript</span>
                         </div>
-                        <p>Each topic features:</p>
+                        <p>Our notes include:</p>
                         <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                            <li>Step-by-step explanations</li>
-                            <li>Practical code examples</li>
+                            <li>Core concepts and syntax</li>
+                            <li>Best practices and patterns</li>
                             <li>Common pitfalls and solutions</li>
-                            <li>Best practices and conventions</li>
                             <li>Practice sheets, and questions</li>
                         </ul>
                     </div>
@@ -676,9 +671,7 @@
                 <div class="section-divider"></div>
 
                 <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🌟 Current Focus Areas</h3>
-                <p>
-                    We're actively developing content in these areas:
-                </p>
+                <p>We're actively developing content in these areas:</p>
                 <div class="tech-stack" style="margin: 1.5rem 0;">
                     <span class="tech-badge">Python Programming</span>
                     <span class="tech-badge">Flask Development</span>
@@ -690,15 +683,9 @@
                 <div class="section-divider"></div>
 
                 <h3 style="color: var(--accent-color); margin-bottom: 1rem;">💡 Learning Approach</h3>
-                <p>
-                    Our content follows a practical, hands-on approach. We focus on building real projects and solving
-                    actual coding problems. Every concept is explained with practical examples and use cases, making it
-                    easier to understand and apply in real-world scenarios.
-                </p>
+                <p>Our content follows a practical, hands-on approach. We focus on building real projects and solving actual coding problems. Every concept is explained with practical examples and use cases, making it easier to understand and apply in real-world scenarios.</p>
                 <br>
-                <p>
-                    What makes our content unique:
-                </p>
+                <p>What makes our content unique:</p>
                 <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
                     <li>Clear, concise explanations with practical examples</li>
                     <li>Focus on Python and Flask framework</li>
@@ -710,9 +697,7 @@
                 <div class="section-divider"></div>
 
                 <h3 style="color: var(--accent-color); margin-bottom: 1rem;">🎯 Future Roadmap</h3>
-                <p>
-                    We're continuously expanding our content library. Upcoming additions include:
-                </p>
+                <p>We're continuously expanding our content library. Upcoming additions include:</p>
                 <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
                     <li>Advanced Python concepts and applications</li>
                     <li>Web development best practices and guides</li>
@@ -721,13 +706,7 @@
                     <li>More languages tutorials and guides</li>
                 </ul>
                 <br>
-                <p>
-                    Join us on this learning journey as we continue to build and expand our programming resources.
-                    Whether
-                    you're starting with Python basics or building complex Flask applications, NoteVibe is here to
-                    support
-                    your growth as a developer.
-                </p>
+                <p>Join us on this learning journey as we continue to build and expand our programming resources. Whether you're starting with Python basics or building complex Flask applications, NoteVibe is here to support your growth as a developer.</p>
                 <br>
                 <a href="{{ url_for('about') }}" class="abt-btn">Know more</a>
             </div>
@@ -754,16 +733,18 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank"
-                    aria-label="YouTube Channel">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank" aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
         <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
-
-    <!-- Deferred JavaScript -->
-    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </body>
 
 </html>

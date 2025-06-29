@@ -1,42 +1,39 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – About Page                                                    ║
+     ║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
+     ║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – About Page                                                    ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>About - NoteVibe</title>
+    <title>{{ page_title or 'About - NoteVibe' }}</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
-    <meta name="description"
-        content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
+    <meta name="description" content="{{ page_description or 'Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.' }}">
 
     <!-- SEO Meta Tags -->
-    <link rel="canonical" href="https://notevibe.com/about.html">
+    <link rel="canonical" href="{{ canonical_url or request.url }}">
     <meta name="theme-color" content="#08f7fe">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://notevibe.com/about.html">
-    <meta property="og:title" content="About - NoteVibe">
-    <meta property="og:description"
-        content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
-    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="og:url" content="{{ og_url or request.url }}">
+    <meta property="og:title" content="{{ og_title or page_title or 'About - NoteVibe' }}">
+    <meta property="og:description" content="{{ og_description or page_description or 'Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.' }}">
+    <meta property="og:image" content="{{ og_image or url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://notevibe.com/about.html">
-    <meta property="twitter:title" content="About - NoteVibe">
-    <meta property="twitter:description"
-        content="Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.">
-    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="twitter:url" content="{{ canonical_url or request.url }}">
+    <meta property="twitter:title" content="{{ twitter_title or page_title or 'About - NoteVibe' }}">
+    <meta property="twitter:description" content="{{ twitter_description or page_description or 'Learn more about NoteVibe, our mission, and the team dedicated to providing top-notch programming resources and community support.' }}">
+    <meta property="twitter:image" content="{{ twitter_image or url_for('static', filename='images/og-image.jpg', _external=True) }}">
 
     <!-- Favicon -->
     <link rel="icon" href="/static/images/favicon.ico">
@@ -408,19 +405,9 @@
         <a href="{{ url_for('home') }}" class="logo" aria-label="NoteVibe Home">NoteVibe™</a>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-
-            <!-- Dropdown for Services -->
-            <li class="dropdown">
-                <a href="{{ url_for('services') }}" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('notes') }}">Notes</a>
-                    <a href="{{ url_for('cheatsheets') }}">Cheatsheets</a>
-                    <a href="{{ url_for('interview_prep') }}">Interview Prep</a>
-                </div>
-            </li>
-
+            <li><a href="{{ url_for('services') }}">Services</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            <li><a href="{{ url_for('about') }}" class="active" aria-current="page">About</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
     </nav>
 
@@ -429,15 +416,10 @@
         <section class="about-section">
             <div class="about-card">
                 <h1>About Us</h1>
-                <p>Welcome to NoteVibe — your go-to hub for simplified programming education. We offer concise,
-                    high-quality notes, cheatsheets, and resources to help learners at all levels build a solid coding
-                    foundation.</p>
+<p>Welcome to <strong style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 1rem; text-decoration: none;">NoteVibe</strong> — your ultimate pitstop for no-fluff, high-impact programming content. Whether you’re just starting out or levelling up, we’ve got the notes, cheat sheets, and code wisdom you need — all in one sleek hub.</p>
 
-                <p>NoteVibe is currently under development. You may encounter minor issues or unfinished features. If
-                    so, feel free to <a href="{{ url_for('contact') }}"
-                        style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 1rem; text-decoration: none;">contact
-                        us</a> — your feedback is invaluable
-                    as we continue to grow and refine the platform.</p>
+<p>NoteVibe is a work in progress — the engine’s hot, but we’re still tuning the ride. If you spot any bugs or unfinished bits, don’t ghost it. <a style="color: var(--accent-color); font-family: 'Orbitron', 'Roboto', Arial, sans-serif; font-size: 1rem; text-decoration: none;" href="{{ url_for('contact') }}">Hit us up</a> — your feedback fuels our evolution.</p>
+
 
         </section>
     </main>
@@ -463,15 +445,18 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank" aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
         <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
-
-    <!-- Deferred JavaScript -->
-    <script src="/static/js/main.js" defer></script>
 </body>
 
 </html>

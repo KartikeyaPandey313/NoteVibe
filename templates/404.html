@@ -1,38 +1,48 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – 404 Error Page                                               ║
+     ║ Purpose: Custom error page for not found routes.                        ║
+     ║ Styling: Minimal, no navbar, no profile icon, no footer.                ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – 404 Error Page                                                ║
-║ Version: 1.0.1 | Proprietary License – see LICENSE                       ║
-║ Author: Kartikeya Pandey | https://notevibe.onrender.com                 ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
 <html lang="en">
 
 <head>
+    <!-- ╔════════════════════════════════════════════════════════════════════╗ -->
+    <!-- ║ Head: Meta, Fonts, Styles, and Theming                          ║ -->
+    <!-- ╚════════════════════════════════════════════════════════════════════╝ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Page Not Found - NoteVibe</title>
+    <meta name="robots" content="noindex, follow">
+    <title>{{ page_title|default('404 Not Found - NoteVibe') }}</title>
     <meta name="author" content="NoteVibe Team">
     <meta name="owner" content="Kartikeya Pandey">
-    <meta name="description"
-        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
+    <meta name="description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
     <link rel="canonical" href="https://notevibe.com/404.html">
     <meta name="theme-color" content="#08f7fe">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://notevibe.com/404.html">
-    <meta property="og:title" content="Page Not Found - NoteVibe">
-    <meta property="og:description"
-        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
-    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{{ page_title|default('404 Not Found - NoteVibe') }}">
+    <meta property="og:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://notevibe.com/404.html">
-    <meta property="twitter:title" content="Page Not Found - NoteVibe">
-    <meta property="twitter:description"
-        content="The page you're looking for doesn't exist. Return to NoteVibe's homepage to explore our programming resources.">
-    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
-    <link rel="icon" href="/static/images/favicon.ico">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{{ page_title|default('404 Not Found - NoteVibe') }}">
+    <meta property="twitter:description" content="{{ page_description|default('The page you are looking for does not exist on NoteVibe.') }}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -44,219 +54,224 @@
             --accent-color: #08f7fe;
             --accent-gradient: linear-gradient(90deg, #08f7fe 0%, #09fbd3 100%);
             --nav-link-color: #fff;
+            --navbar-height: 70px;
             --card-bg: rgba(20, 22, 23, 0.94);
             --glass-bg: rgba(30, 39, 60, 0.92);
+            --glass-blur: blur(7px);
             --btn-glow: 0 0 18px #08f7fe99, 0 0 4px #09fbd366;
             --text-glow: 0 0 6px #08f7fe99;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
             font-family: 'Roboto', Arial, sans-serif;
             background: #10131a;
             color: #e3e3e3;
             min-height: 100vh;
+        }
+        .navbar {
+            background: var(--glass-bg);
+            -webkit-backdrop-filter: var(--glass-blur);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 2px 16px rgba(8, 247, 254, 0.08);
+            height: var(--navbar-height);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #10131a 0%, #232d3f 100%);
-            overflow: hidden;
-            position: relative;
+            justify-content: space-between;
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 2px solid #09fbd3;
+            animation: navFadeIn 900ms cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .error-container {
-            text-align: center;
-            max-width: 600px;
-            padding: 2rem;
-            z-index: 10;
-        }
-
-        .error-code {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
-            font-size: 10rem;
-            font-weight: bold;
-            background: var(--accent-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            line-height: 1;
-            margin-bottom: 1rem;
-            text-shadow: var(--text-glow);
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                filter: drop-shadow(0 0 5px rgba(8, 247, 254, 0.7));
-            }
-
-            50% {
-                filter: drop-shadow(0 0 20px rgba(8, 247, 254, 0.9));
-            }
-
-            100% {
-                filter: drop-shadow(0 0 5px rgba(8, 247, 254, 0.7));
-            }
-        }
-
-        .error-message {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        .error-description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            color: #e3e3e3;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent-gradient);
-            color: #10131a;
-            font-weight: bold;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: var(--btn-glow);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px #08f7feaa, 0 0 8px #09fbd388;
-        }
-
-        .logo {
-            font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+        .navbar .logo {
+            font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
             background: var(--accent-gradient);
             background-clip: text;
             -webkit-background-clip: text;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 2px;
             text-decoration: none;
             filter: drop-shadow(0 2px 8px #08f7fe44);
             text-shadow: var(--text-glow);
-            margin-bottom: 3rem;
-            display: block;
+            user-select: none;
         }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2.2rem;
+        }
+        .navbar ul li {
+            position: relative;
+        }
+        .navbar ul li a {
+            color: var(--nav-link-color);
+            text-decoration: none;
+            font-size: 1.13rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            position: relative;
+            transition: color 0.16s, background 0.16s;
             z-index: 1;
+            overflow: hidden;
         }
-
-        .particle {
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+        li a, .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+        li a:hover { border-radius: 16px; }
+        li.dropdown { display: inline-block; }
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
             position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+        .dropdown-content a:hover {
             background-color: var(--accent-color);
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 15s infinite;
+            color: #10131a;
+            border-radius: 8px;
         }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-
-            25% {
-                transform: translateY(-20px) translateX(10px);
-            }
-
-            50% {
-                transform: translateY(0) translateX(20px);
-            }
-
-            75% {
-                transform: translateY(20px) translateX(10px);
-            }
-
-            100% {
-                transform: translateY(0) translateX(0);
+        .error-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+        }
+        .error-section img {
+            max-width: 320px;
+            margin-bottom: 2rem;
+        }
+        .error-section h1 {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px #08f7fe55;
+        }
+        .error-section p {
+            font-size: 1.2rem;
+            color: #e3e3e3;
+            margin-bottom: 2rem;
+        }
+        .home-btn {
+            background: var(--accent-gradient);
+            color: var(--primary-color);
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: var(--btn-glow);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .home-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 25px #08f7feaa, 0 0 8px #09fbd377;
+        }
+        .footer-card {
+            background-color: var(--secondary-color);
+            color: var(--nav-link-color);
+            text-align: center;
+            padding: 2rem 0;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin: 0;
+            margin-top: 3rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .footer-card a {
+            color: var(--nav-link-color);
+            display: block;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        .footer-card a:hover {
+            color: var(--accent-color);
+        }
+        .footer-card p {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 900px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
             }
         }
-
-        @media (max-width: 768px) {
-            .error-code {
-                font-size: 6rem;
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 1rem;
             }
-
-            .error-message {
-                font-size: 1.5rem;
-            }
-
-            .error-description {
-                font-size: 1rem;
-            }
-
-            .logo {
-                font-size: 2rem;
+            .navbar .logo {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="particles" id="particles"></div>
-
-    <div class="error-container">
-        <a href="{{ url_for('home') }}" class="logo">NoteVibe™</a>
-        <h1 class="error-code">404</h1>
-        <h2 class="error-message">Page Not Found</h2>
-        <p class="error-description">Oops! The page you're looking for doesn't exist or has been moved. Let's get you
-            back on track.</p>
-        <a href="{{ url_for('home') }}" class="btn">Return to Homepage</a>
-    </div>
-
-    <script>
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 20;
-
-        for (let i = 0; i < particleCount; i++) {
-            const size = Math.random() * 5 + 2;
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-
-            // Random position
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-
-            // Random animation delay
-            const delay = Math.random() * 10;
-
-            // Random opacity
-            const opacity = Math.random() * 0.5 + 0.1;
-
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${posX}%`;
-            particle.style.top = `${posY}%`;
-            particle.style.animationDelay = `${delay}s`;
-            particle.style.opacity = opacity;
-
-            particlesContainer.appendChild(particle);
-        }
-    </script>
+    <main>
+        <section class="error-section">
+            <h1 style="font-size: 12rem; font-family: 'Orbitron', 'Roboto', Arial, sans-serif; text-decoration: none; color: var(--accent-color); text-shadow: 0 0 12px #08f7fe55;">404</h1>
+            <p style="font-size: 1.5rem; font-family:'Roboto', Arial, sans-serif; text-decoration: none; color: var(--nav-link-color);">The page you are looking for does not exist.<br>Return to the homepage or explore our services.</p>
+            <a href="{{ url_for('home') }}" class="home-btn">Go to Home</a>
+        </section>
+    </main>
+    
 </body>
 
 </html>

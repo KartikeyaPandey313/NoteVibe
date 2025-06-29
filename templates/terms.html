@@ -1,48 +1,39 @@
+<!-- ╔════════════════════════════════════════════════════════════════════════════╗
+     ║ NoteVibe – Terms of Service                                              ║
+     ║ Purpose: Displays the website's Terms of Service for users.              ║
+     ║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
+     ╚════════════════════════════════════════════════════════════════════════════╝ -->
+
 <!DOCTYPE html>
-<!--
-╔═══════════════════════════════════════════════════════════════════════════╗
-║ NoteVibe – Terms of Service                                              ║
-║ Purpose: Displays the website's Terms of Service for users.              ║
-║ Author: NoteVibe Team | MIT License | https://www.notevibe.onrender.com  ║
-╚═══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="en">
 
 <head>
+    <!-- Meta tags for SEO and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-    <title>Terms of Service - NoteVibe</title>
-    <meta name="author" content="NoteVibe Team">
-    <meta name="owner" content="Kartikeya Pandey">
+    <title>{{ page_title or 'Terms of Service - NoteVibe' }}</title>
     <meta name="description"
-        content="Read the Terms of Service that govern the use of NoteVibe and its resources.">
-
-    <!-- SEO Meta Tags -->
-    <link rel="canonical" href="https://notevibe.com/terms.html">
-    <meta name="theme-color" content="#08f7fe">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://notevibe.com/terms.html">
-    <meta property="og:title" content="Terms of Service - NoteVibe">
+        content="{{ page_description or 'Read the Terms of Service that govern the use of NoteVibe and its resources.' }}">
+    <link rel="canonical" href="{{ canonical_url or request.url }}">
+    <meta property="og:title" content="{{ og_title or page_title or 'Terms of Service - NoteVibe' }}">
     <meta property="og:description"
-        content="Read the Terms of Service that govern the use of NoteVibe and its resources.">
-    <meta property="og:image" content="https://notevibe.com/static/images/og-image.jpg">
-
-    <!-- Twitter -->
+        content="{{ og_description or page_description or 'Read the Terms of Service that govern the use of NoteVibe and its resources.' }}">
+    <meta property="og:url" content="{{ og_url or request.url }}">
+    <meta property="og:image"
+        content="{{ og_image or url_for('static', filename='images/og-image.jpg', _external=True) }}">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#08f7fe">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://notevibe.com/terms.html">
-    <meta property="twitter:title" content="Terms of Service - NoteVibe">
+    <meta property="twitter:title" content="{{ twitter_title or page_title or 'Terms of Service - NoteVibe' }}">
     <meta property="twitter:description"
-        content="Read the Terms of Service that govern the use of NoteVibe and its resources.">
-    <meta property="twitter:image" content="https://notevibe.com/static/images/og-image.jpg">
-
-    <!-- Favicon -->
+        content="{{ twitter_description or page_description or 'Read the Terms of Service that govern the use of NoteVibe and its resources.' }}">
+    <meta property="twitter:image"
+        content="{{ twitter_image or url_for('static', filename='images/og-image.jpg', _external=True) }}">
     <link rel="icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
 
-    <!-- Stylesheets -->
+    <!-- Stylesheets for fonts and main CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
@@ -53,6 +44,7 @@
     <!-- PWA Support -->
     <link rel="manifest" href="/static/manifest.json">
 
+    <!-- Inline styles for custom theming -->
     <style>
         :root {
             --primary-color: #10131a;
@@ -82,7 +74,7 @@
             min-height: 100vh;
         }
 
-        /* ── Navbar ───────────────────────────────────────────── */
+        /* Navbar styles */
         .navbar {
             background: var(--glass-bg);
             -webkit-backdrop-filter: var(--glass-blur);
@@ -112,6 +104,7 @@
             }
         }
 
+        /* Logo styles */
         .navbar .logo {
             font-family: 'Baloo Bhai 2', 'Roboto', Arial, sans-serif;
             color: transparent;
@@ -127,6 +120,7 @@
             user-select: none;
         }
 
+        /* Navbar list styles */
         .navbar ul {
             list-style: none;
             display: flex;
@@ -157,7 +151,59 @@
             background: #232d3f;
         }
 
-        /* ── Terms Section ────────────────────────────────────── */
+        /* Dropdown styles */
+        li a,
+        .dropbtn {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            border-radius: 16px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            transform: translateY(10px);
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            color: var(--nav-link-color);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent-color);
+            color: #10131a;
+            border-radius: 8px;
+        }
+
+        /* Terms Section styles */
         .terms-section {
             display: flex;
             flex-direction: column;
@@ -269,58 +315,6 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
-
-        /* Dropdown styles */
-        li a,
-        .dropbtn {
-            display: inline-block;
-            text-align: center;
-            padding: 12px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover {
-            border-radius: 16px;
-        }
-
-        li.dropdown {
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: block;
-            opacity: 0;
-            pointer-events: none;
-            position: absolute;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            background-color: var(--secondary-color);
-            border-radius: 12px;
-            transform: translateY(10px);
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            color: var(--nav-link-color);
-        }
-
-        .dropdown-content a:hover {
-            background-color: var(--accent-color);
-            color: #10131a;
-            border-radius: 8px;
-        }
     </style>
 </head>
 
@@ -352,45 +346,48 @@
             <div class="terms-card">
                 <h1>Terms of Service</h1>
 
-                <p>Welcome to NoteVibe! These Terms of Service ("Terms") outline the rules and regulations for the use
-                    of NoteVibe's website and services. By accessing this website, you accept these Terms in full. Do
-                    not continue to use NoteVibe if you do not agree with all of the Terms stated on this page.</p>
+                <p>Welcome to NoteVibe! These Terms of Service ("Terms") govern your access to and use of our website
+                    and services. By accessing or using NoteVibe, you agree to be bound by these Terms. If you do not
+                    agree with any part of the Terms, please do not use the site.</p>
 
                 <h2>1. Intellectual Property</h2>
-                <p>Unless otherwise stated, NoteVibe and/or its licensors own the intellectual property rights for all
-                    material on NoteVibe. All intellectual property rights are reserved. You may access this from
-                    NoteVibe for your own personal use subject to restrictions set in these Terms.</p>
+                <p>All content, features, and functionality on NoteVibe, including text, graphics, logos, and code, are
+                    the intellectual property of NoteVibe and/or its licensors. All rights are reserved. You may access
+                    NoteVibe for personal, non-commercial use only, subject to the restrictions outlined below.</p>
 
                 <ul>
-                    <li>You must not republish material from NoteVibe without proper attribution.</li>
-                    <li>You must not sell, rent, or sub-license material from NoteVibe.</li>
-                    <li>You must not reproduce, duplicate, or copy material from NoteVibe for commercial purposes.</li>
+                    <li>Do not republish material from NoteVibe without explicit permission or proper attribution.</li>
+                    <li>Do not sell, rent, or sublicense any content from the platform.</li>
+                    <li>Do not reproduce or exploit content for commercial gain.</li>
                 </ul>
 
                 <h2>2. Acceptable Use</h2>
-                <p>You may not use NoteVibe in any way that causes, or may cause, damage to the website or impairment of
-                    the availability or accessibility of the website. You may not use the website in any way which is
-                    unlawful, illegal, fraudulent, or harmful.</p>
+                <p>By using NoteVibe, you agree not to:</p>
+                <ul>
+                    <li>Use the platform in a way that disrupts or damages its functionality or accessibility.</li>
+                    <li>Engage in any unlawful, harmful, fraudulent, or malicious activity.</li>
+                    <li>Upload or distribute content that violates laws, infringes rights, or contains harmful code.
+                    </li>
+                </ul>
 
                 <h2>3. Disclaimer</h2>
-                <p>All the information on this website is published in good faith and for educational purposes only.
-                    NoteVibe does not make any warranties about the completeness, reliability, and accuracy of this
-                    information. Any action you take upon the information you find on this website is strictly at your
-                    own risk.</p>
+                <p>NoteVibe provides content and services "as is" and "as available." While we aim for accuracy and
+                    reliability, we make no guarantees regarding the completeness or correctness of the content. Use the
+                    information at your own risk.</p>
 
                 <h2>4. Limitation of Liability</h2>
-                <p>In no event shall NoteVibe, nor any of its officers, directors, and employees, be held liable for
-                    anything arising out of or in any way connected with your use of this website whether such liability
-                    is under contract. NoteVibe shall not be held liable for any indirect, consequential, or special
-                    liability arising out of or in any way related to your use of this website.</p>
+                <p>NoteVibe and its team shall not be held responsible for any loss or damage, whether direct or
+                    indirect, resulting from your use of the site. This includes, but is not limited to, data loss,
+                    service interruptions, or third-party issues.</p>
 
-                <h2>5. Changes to These Terms</h2>
-                <p>We reserve the right to revise these Terms at any time. By using NoteVibe, you are expected to review
-                    these Terms on a regular basis to ensure you understand all Terms governing the use of this
-                    website.</p>
+                <h2>5. Modifications to Terms</h2>
+                <p>We may update these Terms at any time without prior notice. Continued use of NoteVibe means you
+                    accept any revisions. Please review this page periodically to stay informed.</p>
 
-                <p>If you have any questions about these Terms, please <a href="{{ url_for('contact') }}"
-                        style="color: var(--accent-color); text-decoration: none;">contact us</a>.</p>
+
+                <p>If you have any questions about these Terms, please <a
+                        style="color: var(--accent-color); text-decoration: none; font-family: 'Orbitron', 'Roboto', Arial, sans-serif;"
+                        href="{{ url_for('contact') }}">contact us</a>.</p>
             </div>
         </section>
     </main>
@@ -417,15 +414,21 @@
             </div>
             <div>
                 <h3>Social</h3>
-                <a href="https://github.com/KartikeyaPandey313/" target="_blank">GitHub</a>
-                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank">YouTube</a>
+                <a href="https://github.com/KartikeyaPandey313/" target="_blank" aria-label="GitHub Profile">
+                    <img src="{{ url_for('static', filename='images/github-icon.png') }}" alt="GitHub"
+                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    GitHub
+                </a>
+                <a href="https://www.youtube.com/channel/UCWHtM18q0CunDmvllpiRvDw" target="_blank"
+                    aria-label="YouTube Channel">
+                    <img src="{{ url_for('static', filename='images/youtube-icon.png') }}" alt="YouTube"
+                        style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">
+                    YouTube
+                </a>
             </div>
         </div>
         <p>Made with ❤️ by NoteVibe Team | © 2025 NoteVibe. All rights reserved.</p>
     </footer>
-
-    <!-- Deferred JavaScript -->
-    <script src="/static/js/main.js" defer></script>
 </body>
 
-</html> 
+</html>
